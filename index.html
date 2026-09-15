@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swap&go - หน้าแรก</title>
+    <title>หน้าแรก - Swap&go</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
         * {
-            box-sizing: border-box;
-            font-family: 'Kanit', sans-serif;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', sans-serif;
         }
 
         body {
             background-color: #f8f9fa;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
+        /* Navbar */
         .navbar {
             background: #fff;
             height: 60px;
@@ -92,8 +96,40 @@
             color: #333;
             text-decoration: none;
             cursor: pointer;
+            position: relative;
         }
 
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            background: #ff4757;
+            color: white;
+            font-size: 0.65rem;
+            padding: 1px 5px;
+            border-radius: 50%;
+            display: none;
+        }
+
+        /* ปุ่มเข้าสู่ระบบแบบยังไม่ล็อกอิน */
+        .btn-login-nav {
+            background-color: #fff;
+            color: #004d34;
+            border: 1px solid #004d34;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .btn-login-nav:hover {
+            background-color: #004d34;
+            color: #fff;
+        }
+
+        /* รูปโปรไฟล์เมื่อล็อกอินแล้ว */
         .nav-profile-link {
             color: inherit;
             text-decoration: none;
@@ -119,6 +155,7 @@
             object-fit: cover;
         }
 
+        /* Sidebar */
         .sidebar-overlay {
             position: fixed;
             top: 0;
@@ -208,13 +245,239 @@
             border: none;
             border-top: 1px solid #eee;
         }
+
+        /* Hero Banner Section */
+        .hero-section {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+            width: 100%;
+            flex: 1;
+        }
+
+        .hero-banner {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-banner img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            color: white;
+            padding: 50px;
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .hero-search-box {
+            display: flex;
+            background: #fff;
+            border-radius: 30px;
+            padding: 6px 6px 6px 20px;
+            align-items: center;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .hero-search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 0.95rem;
+            background: transparent;
+        }
+
+        .hero-search-btn {
+            background: #004d34;
+            color: white;
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .hero-search-btn:hover {
+            background: #003825;
+        }
+
+        /* Footer Styles */
+        .site-footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 50px 0 0 0;
+            margin-top: auto;
+            width: 100%;
+        }
+        .footer-contact-container {
+            max-width: 1100px !important;
+            width: 90% !important;
+            margin: 0 auto !important;
+            background-color: #004d34 !important;
+            border-radius: 12px !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 40px 50px !important;
+            gap: 40px !important;
+            box-sizing: border-box !important;
+        }
+        .footer-contact-left {
+            flex: 1;
+        }
+        .footer-logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #004d34;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            background: #fff;
+            width: fit-content;
+            padding: 5px 12px;
+            border-radius: 6px;
+        }
+        .footer-contact-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .footer-contact-desc {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .footer-contact-info {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        .footer-contact-info li {
+            font-size: 0.9rem;
+            color: #fff;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-social-icons {
+            display: flex;
+            gap: 12px;
+        }
+        .footer-social-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer-social-icon:hover {
+            background: #fff;
+            color: #004d34;
+        }
+        .footer-contact-right {
+            flex-shrink: 0;
+        }
+        .footer-contact-right img {
+            width: 320px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .footer-bottom-bar {
+            background-color: #111;
+            text-align: center;
+            padding: 15px 20px;
+            font-size: 0.85rem;
+            color: #777;
+            border-top: 1px solid #282828;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-contact-container {
+                flex-direction: column !important;
+                text-align: center;
+                padding: 30px 20px !important;
+            }
+            .footer-logo {
+                margin: 0 auto 15px auto;
+            }
+            .footer-contact-info li {
+                justify-content: center;
+            }
+            .footer-social-icons {
+                justify-content: center;
+            }
+            .footer-contact-right img {
+                width: 100%;
+                max-width: 320px;
+            }
+            .nav-search {
+                display: none;
+            }
+            .hero-content {
+                padding: 30px 20px;
+            }
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-
+    <!-- Sidebar ด้านซ้าย -->
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
-
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h3>เมนูจัดการ</h3>
@@ -233,9 +496,11 @@
         </ul>
         <hr class="sidebar-divider">
         <ul class="sidebar-menu">
-            <li><a href="index-regis.html" style="color: #dc3545;"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
+            <li><a href="index-regis.html" id="logout-btn" style="color: #dc3545;"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
         </ul>
     </aside>
+
+    <!-- Navbar -->
     <header class="navbar">
         <div class="logo">
             <i class="fa-solid fa-graduation-cap"></i> Swap&go
@@ -249,89 +514,28 @@
             <i class="fa-solid fa-magnifying-glass" style="color: #888; font-size: 0.85rem;"></i>
             <input type="text" placeholder="ค้นหา...">
         </div>
-        <div class="nav-right-icons">
-            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
-        
-            <a href="profile.html" class="nav-profile-link">
-                <div class="nav-profile-circle" id="nav-profile-container">
-                    <i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>
+        <div class="nav-right-icons" id="nav-right-container">
+            <!-- JavaScript จะสลับการแสดงผลระหว่างปุ่ม "เข้าสู่ระบบ" กับ "โปรไฟล์" ตรงนี้ -->
+        </div>
+    </header>
+
+    <!-- เนื้อหาหน้าแรก -->
+    <main class="hero-section">
+        <div class="hero-banner">
+            <img src="river.jpg" alt="RMUTTO Building">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>ซื้อขายของมือสอง สำหรับนักศึกษา</h1>
+                <p>ของดี มีคุณค่า ส่งต่อได้เสมอ</p>
+                <div class="hero-search-box">
+                    <input type="text" placeholder="ค้นหาสินค้า...">
+                    <button class="hero-search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
-            </a>
-            <i class="fa-solid fa-bars" id="menu-toggle" style="cursor: pointer;" title="เปิด/ปิดเมนู"></i>
-        </div>
-    </header>
-    <header class="hero">
-        <img src="hh.jpg" alt="แบนเนอร์หลัก" class="hero-bg-img">
-        <div class="hero-card">
-            <h1>ซื้อขายของมือสอง<br>สำหรับนักศึกษา</h1>
-            <p>ของดี มีคุณค่า ส่งต่อได้เสมอ</p>
-            <div class="hero-search-box">
-                <input type="text" placeholder="ค้นหาสินค้า...">
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </div>
-    </header>
-
-    <!-- ส่วนฟีเจอร์เด่น -->
-    <section class="features">
-        <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-            <h3>ราคาดี</h3>
-            <p>ประหยัดกว่า</p>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-border-all"></i></div>
-            <h3>สินค้าหลากหลาย</h3>
-            <p>ครบทุกหมวด</p>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-            <h3>ปลอดภัย</h3>
-            <p>ตรวจสอบได้</p>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-users"></i></div>
-            <h3>ส่งต่อโอกาส</h3>
-            <p>ให้เพื่อนนักศึกษา</p>
-        </div>
-    </section>
-
-    <main class="products-section">
-        <h2 class="section-title">สินค้าล่าสุด</h2>
-        <div class="product-grid" id="product-grid"></div>
     </main>
-    <section class="about-section">
-        <div class="about-banner">
-            <img src="22 (2).jpg" alt="เกี่ยวกับเรา" class="about-bg-img">
-            <h2>เกี่ยวกับเรา</h2>
-        </div>
-        <div class="about-content">
-            <h3>Swap&go ศูนย์รวมของมือสองสภาพดี ส่งต่อได้ไวยิ่งขึ้นเพื่อชาว มทร.ตะวันออก</h3>
-            <p>แพลตฟอร์มที่เชื่อมต่อนักศึกษาให้ซื้อ-ขาย-แลกเปลี่ยน อุปกรณ์การเรียน หนังสือ ชุดนักศึกษา และของใช้ในหอพักได้อย่างสะดวก ปลอดภัย ในราคาประหยัด</p>
-        </div>
-        <div class="features features-bottom">
-            <div class="feature-item">
-                <div class="feature-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-                <h3>ราคาดี</h3>
-                <p>ประหยัดกว่า</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon"><i class="fa-solid fa-border-all"></i></div>
-                <h3>สินค้าหลากหลาย</h3>
-                <p>ครบทุกหมวด</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                <h3>ปลอดภัย</h3>
-                <p>ตรวจสอบได้</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon"><i class="fa-solid fa-users"></i></div>
-                <h3>ส่งต่อโอกาส</h3>
-                <p>ให้เพื่อนนักศึกษา</p>
-            </div>
-        </div>
-    </section>
+
+    <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-contact-container">
             <div class="footer-contact-left">
@@ -360,78 +564,67 @@
             <p>&copy; 2026 Swap&go. All rights reserved. RMUTTO Student Marketplace.</p>
         </div>
     </footer>
+
+    <!-- JavaScript สำหรับเช็กสถานะล็อกอิน -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const savedData = JSON.parse(localStorage.getItem('userAccountSettings')) || {};
-            const navProfileContainer = document.getElementById('nav-profile-container');
+            const navRightContainer = document.getElementById('nav-right-container');
 
-            if (navProfileContainer) {
-                if (savedData.avatarImage) {
-                    navProfileContainer.innerHTML = `<img src="${savedData.avatarImage}" alt="Profile">`;
-                } else {
-                    navProfileContainer.innerHTML = `<i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>`;
+            // ตรวจสอบว่ามีการตั้งค่าบัญชีหรือชื่อผู้ใช้ในระบบหรือยัง (ถือว่าล็อกอินแล้ว)
+            const isLoggedin = savedData.avatarImage || savedData.name || localStorage.getItem('isLoggedIn') === 'true';
+
+            if (isLoggedin) {
+                // ถ้าล็อกอินแล้ว แสดงไอคอนตะกร้า และ รูปโปรไฟล์
+                navRightContainer.innerHTML = `
+                    <a href="cart.html">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-badge" id="cart-badge">0</span>
+                    </a>
+                    <a href="account-settings.html" class="nav-profile-link">
+                        <div class="nav-profile-circle" id="nav-profile-container">
+                            ${savedData.avatarImage ? `<img src="${savedData.avatarImage}" alt="Profile">` : `<i class="fa-solid fa-user" style="font-size: 1rem; color: #555;"></i>`}
+                        </div>
+                    </a>
+                    <i class="fa-solid fa-bars" id="menu-toggle" title="เปิด/ปิดเมนู" style="cursor: pointer;"></i>
+                `;
+            } else {
+                // ถ้ายังไม่ล็อกอิน แสดงปุ่ม "เข้าสู่ระบบ"
+                navRightContainer.innerHTML = `
+                    <a href="index-regis.html" class="btn-login-nav">เข้าสู่ระบบ</a>
+                    <i class="fa-solid fa-bars" id="menu-toggle" title="เปิด/ปิดเมนู" style="cursor: pointer;"></i>
+                `;
+            }
+
+            // ผูกฟังก์ชันเปิด/ปิด Sidebar หลังจากสร้าง HTML เสร็จแล้ว
+            const menuToggle = document.getElementById('menu-toggle');
+            const closeBtn = document.getElementById('close-btn');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+            if (menuToggle && sidebar && sidebarOverlay) {
+                menuToggle.addEventListener('click', () => {
+                    sidebar.classList.add('active');
+                    sidebarOverlay.classList.add('active');
+                });
+                closeBtn.addEventListener('click', closeSidebar);
+                sidebarOverlay.addEventListener('click', closeSidebar);
+
+                function closeSidebar() {
+                    sidebar.classList.remove('active');
+                    sidebarOverlay.classList.remove('active');
                 }
             }
 
-            loadLatestProducts();
+            // ปุ่มออกจากระบบ (ล้างข้อมูลจำลองการล็อกอิน)
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('userAccountSettings');
+                    localStorage.removeItem('isLoggedIn');
+                });
+            }
         });
-
-        const menuToggle = document.getElementById('menu-toggle');
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebar-overlay');
-        const closeBtn = document.getElementById('close-btn');
-
-        if (menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                sidebar.classList.add('active');
-                sidebarOverlay.classList.add('active');
-            });
-        }
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeSidebar);
-        }
-        if (sidebarOverlay) {
-            sidebarOverlay.addEventListener('click', closeSidebar);
-        }
-
-        function closeSidebar() {
-            sidebar.classList.remove('active');
-            sidebarOverlay.classList.remove('active');
-        }
-        function loadLatestProducts() {
-            const productGrid = document.getElementById("product-grid");
-            if (!productGrid) return;
-
-            const savedProducts = JSON.parse(localStorage.getItem('allProducts')) || [];
-
-            const dummyProducts = [
-                {
-                    id: 1,
-                    name: "หนังสือเรียนคอมพิวเตอร์กราฟิก มือสองสภาพดี",
-                    price: 180,
-                    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=300",
-                    category: "book"
-                }
-            ];  
-
-            const allDisplayProducts = [...savedProducts, ...dummyProducts];
-            productGrid.innerHTML = ""; 
-
-            allDisplayProducts.forEach(product => {
-                const productCard = `
-                    <a href="product-buy.html?id=${product.id}" style="text-decoration: none; color: inherit;">
-                        <div class="product-card" style="background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; padding: 15px; width: 220px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); cursor: pointer;">
-                            <img src="${product.image || product.image_url}" alt="${product.name}" class="product-img" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
-                            <div class="product-info">
-                                <div class="product-name" style="font-size: 0.95rem; font-weight: 500; color: #222; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${product.name}</div>
-                                <div class="product-price" style="font-size: 1rem; font-weight: 600; color: #004d34;">฿${Number(product.price).toLocaleString()}</div>
-                            </div>
-                        </div>
-                    </a>
-                `;
-                productGrid.innerHTML += productCard;
-            });
-        }
     </script>
 </body>
 </html>
