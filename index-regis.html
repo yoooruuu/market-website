@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swap&go</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i> Swap&go
+        </div>
+        <ul class="nav-links">
+            <li><a href="index-regis.html" class="active">หน้าแรก</a></li>
+            <li><a href="catalog-regis.html">สินค้าทั้งหมด</a></li>
+            <li><a href="category-regis.html">หมวดหมู่</a></li>
+        </ul>
+        <div class="nav-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="ค้นหา...">
+        </div>
+        <div class="auth-buttons">
+            <a href="login.html" class="btn-login" style="background: #fff; color: #004d34; border: 1px solid #004d34; padding: 6px 16px; border-radius: 20px; text-decoration: none; font-size: 0.9rem;">เข้าสู่ระบบ</a>
+    </header>
+
+    <header class="hero">
+        <img src="hh.jpg" alt="แบนเนอร์หลัก" class="hero-bg-img">
+        <div class="hero-card">
+            <h1>ซื้อขายของมือสอง<br>สำหรับนักศึกษา</h1>
+            <p>ของดี มีคุณค่า ส่งต่อได้เสมอ</p>
+            <div class="hero-search-box">
+                <input type="text" placeholder="ค้นหาสินค้า...">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+            <h3>ราคาดี</h3>
+            <p>ประหยัดกว่า</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-border-all"></i></div>
+            <h3>สินค้าหลากหลาย</h3>
+            <p>ครบทุกหมวด</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>ปลอดภัย</h3>
+            <p>ตรวจสอบได้</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-users"></i></div>
+            <h3>ส่งต่อโอกาส</h3>
+            <p>ให้เพื่อนนักศึกษา</p>
+        </div>
+    </section>
+
+    <main class="products-section">
+        <h2 class="section-title">สินค้าล่าสุด</h2>
+        <div class="product-grid" id="product-grid"></div>
+    </main>
+
+    <!-- ส่วนเกี่ยวกับเรา -->
+    <section class="about-section">
+        <div class="about-banner">
+            <img src="22 (2).jpg" alt="เกี่ยวกับเรา" class="about-bg-img">
+            <h2>เกี่ยวกับเรา</h2>
+        </div>
+        <div class="about-content">
+            <h3>Swap&go ศูนย์รวมของมือสองสภาพดี ส่งต่อได้ไวยิ่งขึ้นเพื่อชาว มทร.ตะวันออก</h3>
+            <p>แพลตฟอร์มที่เชื่อมต่อนักศึกษาให้ซื้อ-ขาย-แลกเปลี่ยน อุปกรณ์การเรียน หนังสือ ชุดนักศึกษา และของใช้ในหอพักได้อย่างสะดวก ปลอดภัย ในราคาประหยัด</p>
+        </div>
+        <div class="features features-bottom">
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                <h3>ราคาดี</h3>
+                <p>ประหยัดกว่า</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-border-all"></i></div>
+                <h3>สินค้าหลากหลาย</h3>
+                <p>ครบทุกหมวด</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>ปลอดภัย</h3>
+                <p>ตรวจสอบได้</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-users"></i></div>
+                <h3>ส่งต่อโอกาส</h3>
+                <p>ให้เพื่อนนักศึกษา</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-contact-container">
+            <div class="footer-contact-left">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-graduation-cap"></i> Swap&go
+                </div>
+                <h3 class="footer-contact-title">ติดต่อเรา</h3>
+                <p class="footer-contact-desc">มีข้อสงสัย หรือต้องการสอบถามข้อมูลเพิ่มเติม สามารถติดต่อเราได้ผ่านช่องทางด้านล่างนี้</p>
+                
+                <ul class="footer-contact-info">
+                    <li><i class="fa-solid fa-envelope"></i> contact.swapandgo@gmail.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ</li>
+                </ul>
+
+                <div class="footer-social-icons">
+                    <a href="#" class="footer-social-icon social-line"><i class="fa-brands fa-line"></i></a>
+                    <a href="#" class="footer-social-icon social-ig"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="footer-social-icon social-fb"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-contact-right">
+                <img src="river.jpg" alt="RMUTTO Building">
+            </div>
+        </div>
+        <div class="footer-bottom-bar">
+            <p>&copy; 2026 Swap&go. All rights reserved. RMUTTO Student Marketplace.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript โหลดสินค้า -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            loadLatestProducts();
+        });
+
+        function loadLatestProducts() {
+            const productGrid = document.getElementById("product-grid");
+            if (!productGrid) return;
+
+            const savedProducts = JSON.parse(localStorage.getItem('allProducts')) || [];
+            const dummyProducts = [
+                {
+                    id: 1,
+                    name: "หนังสือเรียนคอมพิวเตอร์กราฟิก มือสองสภาพดี",
+                    price: 180,
+                    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=300",
+                    category: "book"
+                }
+            ];  
+
+            const allDisplayProducts = [...savedProducts, ...dummyProducts];
+            productGrid.innerHTML = ""; 
+
+            allDisplayProducts.forEach(product => {
+                const productCard = `
+                    <a href="product-regis.html?id=${product.id}" style="text-decoration: none; color: inherit;">
+                        <div class="product-card">
+                            <img src="${product.image || product.image_url}" alt="${product.name}" class="product-img">
+                            <div class="product-info">
+                                <div class="product-name">${product.name}</div>
+                                <div class="product-price">฿${Number(product.price).toLocaleString()}</div>
+                            </div>
+                        </div>
+                    </a>
+                `;
+                productGrid.innerHTML += productCard;
+            });
+        }
+    </script>
+</body>
+</html>

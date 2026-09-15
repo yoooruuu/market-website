@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรไฟล์ - Swap&go</title>
+    <!-- Google Fonts: Kanit -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        /* --- Navbar Styles --- */
+        .navbar {
+            background: #fff;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar .logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #004d34;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: #004d34;
+            font-weight: 500;
+        }
+
+        .nav-search {
+            position: relative;
+            background: #eef2f3;
+            border-radius: 20px;
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 250px;
+        }
+
+        .nav-search input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        .nav-right-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-right-icons a, 
+        .nav-right-icons i {
+            color: #333;
+            text-decoration: none;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            background: #ff4757;
+            color: white;
+            font-size: 0.65rem;
+            padding: 1px 5px;
+            border-radius: 50%;
+        }
+
+        /* --- Navbar Profile Icon & Image Style --- */
+        .nav-profile-link {
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-profile-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #ddd;
+            border: 1px solid #ccc;
+        }
+
+        .nav-profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- Sidebar Styles --- */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 998;
+        }
+
+        .sidebar-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 260px;
+            height: 100%;
+            background: #fff;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            transition: left 0.3s ease;
+            z-index: 999;
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px 15px 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+        }
+
+        .sidebar-header h3 {
+            font-size: 1.1rem;
+            color: #004d34;
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: #555;
+            text-decoration: none;
+            font-size: 0.92rem;
+            transition: 0.2s;
+        }
+
+        .sidebar-menu li.active a,
+        .sidebar-menu li a:hover {
+            background: #e6f4ea;
+            color: #004d34;
+            font-weight: 500;
+            border-left: 4px solid #004d34;
+        }
+
+        .sidebar-divider {
+            margin: 15px 20px;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+
+        /* --- Main Container & Profile Styles --- */
+        .main-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .profile-content {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 30px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-avatar {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.2rem;
+            color: #adb5bd;
+            overflow: hidden;
+            border: 2px solid #ddd;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 4px;
+        }
+
+        .profile-info p {
+            font-size: 0.88rem;
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .btn-edit {
+            background: #fff;
+            border: 1px solid #a8c5b3;
+            color: #004d34;
+            padding: 5px 18px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-edit:hover {
+            background: #004d34;
+            color: #fff;
+            border-color: #004d34;
+        }
+
+        .profile-stats {
+            display: block;
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stat-box h4 {
+            font-size: 0.88rem;
+            color: #555;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .stat-box span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .recent-orders {
+            margin-top: 25px;
+        }
+
+        .recent-orders h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        .order-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fafbfc;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin-bottom: 12px;
+        }
+
+        .order-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .order-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+        }
+
+        .order-detail h4 {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .order-detail .price {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .order-right {
+            text-align: right;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-shipping {
+            background: #e2f0d9;
+            color: #2b542c;
+        }
+
+        .order-date {
+            font-size: 0.75rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- พื้นหลังมืดตอนเปิด Sidebar -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- แถบ Sidebar ด้านซ้าย -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>เมนูจัดการ</h3>
+            <button class="close-btn" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> หน้าแรก</a></li>
+            <li><a href="catalog.html"><i class="fa-solid fa-border-all"></i> สินค้าทั้งหมด</a></li>
+            <li><a href="category.html"><i class="fa-solid fa-list"></i> หมวดหมู่</a></li>
+            <li class="active"><a href="profile.html"><i class="fa-solid fa-user"></i> โปรไฟล์ของฉัน</a></li>
+            <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> ตะกร้าสินค้า</a></li>
+            <li><a href="shopping.html"><i class="fa-solid fa-bag-shopping"></i> การซื้อของฉัน</a></li>
+            <li><a href="my-reviews.html"><i class="fa-solid fa-star"></i> รีวิวของฉัน</a></li>
+            <li><a href="my-products.html"><i class="fa-solid fa-box"></i> สินค้าของฉัน</a></li>
+            <li><a href="account-settings.html"><i class="fa-solid fa-gear"></i> ตั้งค่าบัญชี</a></li>
+        </ul>
+        <hr class="sidebar-divider">
+        <ul class="sidebar-menu">
+            <li><a href="index.html" style="color: #dc3545;"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
+        </ul>
+    </aside>
+
+    <!-- Navbar แถบบนสุด -->
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i> Swap&go
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="catalog.html">สินค้าทั้งหมด</a></li>
+            <li><a href="category.html">หมวดหมู่</a></li>
+        </ul>
+        <div class="nav-search">
+            <i class="fa-solid fa-magnifying-glass" style="color: #888; font-size: 0.85rem;"></i>
+            <input type="text" placeholder="ค้นหา...">
+        </div>
+        <div class="nav-right-icons">
+            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i><span class="cart-badge">2</span></a>
+            
+            <!-- ไอคอนโปรไฟล์บน Navbar (ซิงค์อัตโนมัติ) -->
+            <a href="account-settings.html" class="nav-profile-link">
+                <div class="nav-profile-circle" id="nav-profile-container">
+                    <i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>
+                </div>
+            </a>
+
+            <!-- ปุ่มไอคอน 3 ขีด เรียกใช้งาน Sidebar -->
+            <i class="fa-solid fa-bars" id="menu-toggle" title="เปิด/ปิดเมนู"></i>
+        </div>
+    </header>
+
+    <!-- เนื้อหาหลักหน้าโปรไฟล์ -->
+    <div class="main-container">
+        <main class="profile-content">
+            <div class="profile-header">
+                <div class="profile-avatar" id="profile-avatar-container">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="profile-info">
+                    <h2 id="profile-name">นทรา มณีแสง</h2>
+                    <p id="profile-details">รหัสนักศึกษา 01690000000-1<br>คณะ วิทยาศาสตร์และเทคโนโลยี</p>
+                    <a href="account-settings.html" class="btn-edit">แก้ไขโปรไฟล์</a>
+                </div>
+            </div>
+
+            <div class="profile-stats">
+                <div class="stat-box">
+                    <h4>รีวิวของฉัน</h4>
+                    <span>12</span>
+                </div>
+            </div>
+
+            <div class="recent-orders">
+                <h3>การซื้อล่าสุด</h3>
+                
+                <div class="order-card">
+                    <div class="order-left">
+                        <div class="order-img"><i class="fa-solid fa-image"></i></div>
+                        <div class="order-detail">
+                            <h4>หนังสือชีววิทยา</h4>
+                            <div class="price">฿250</div>
+                        </div>
+                    </div>
+                    <div class="order-right">
+                        <span class="status status-success">เสร็จสิ้น</span>
+                        <div class="order-date">9 ส.ค. 2569</div>
+                    </div>
+                </div>
+
+                <div class="order-card">
+                    <div class="order-left">
+                        <div class="order-img"><i class="fa-solid fa-image"></i></div>
+                        <div class="order-detail">
+                            <h4>หนังสือชีววิทยา</h4>
+                            <div class="price">฿250</div>
+                        </div>
+                    </div>
+                    <div class="order-right">
+                        <span class="status status-shipping">กำลังจัดส่ง</span>
+                        <div class="order-date">9 ส.ค. 2569</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript ควบคุม Sidebar และการซิงค์ข้อมูลโปรไฟล์ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // โหลดข้อมูลโปรไฟล์และการตั้งค่าบัญชีมาแสดงอัตโนมัติ
+            const savedData = JSON.parse(localStorage.getItem('userAccountSettings')) || {};
+            
+            const navProfileContainer = document.getElementById('nav-profile-container');
+            const profileAvatarContainer = document.getElementById('profile-avatar-container');
+            const profileName = document.getElementById('profile-name');
+            const profileDetails = document.getElementById('profile-details');
+
+            // ซิงค์รูปโปรไฟล์
+            if (savedData.avatarImage) {
+                if (navProfileContainer) {
+                    navProfileContainer.innerHTML = `<img src="${savedData.avatarImage}" alt="Profile">`;
+                }
+                if (profileAvatarContainer) {
+                    profileAvatarContainer.innerHTML = `<img src="${savedData.avatarImage}" alt="Profile">`;
+                }
+            }
+
+            // ซิงค์ชื่อและข้อมูล
+            if (savedData.name && profileName) {
+                profileName.textContent = savedData.name;
+            }
+
+            if (profileDetails) {
+                const studentId = savedData.studentId || '01690000000-1';
+                const faculty = savedData.faculty || 'วิทยาศาสตร์และเทคโนโลยี';
+                profileDetails.innerHTML = `รหัสนักศึกษา ${studentId}<br>คณะ ${faculty}`;
+            }
+        });
+
+        // ควบคุม Sidebar สไลด์
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeBtn = document.getElementById('close-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        if (menuToggle && sidebar && sidebarOverlay && closeBtn) {
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.add('active');
+                sidebarOverlay.classList.add('active');
+            });
+
+            closeBtn.addEventListener('click', closeSidebar);
+            sidebarOverlay.addEventListener('click', closeSidebar);
+
+            function closeSidebar() {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
+<footer class="site-footer">
+    <div class="footer-contact-container">
+        
+        <div class="footer-contact-left">
+            <div class="footer-logo">
+                <i class="fa-solid fa-graduation-cap"></i> Swap&go
+            </div>
+            <h3 class="footer-contact-title">ติดต่อเรา</h3>
+            <p class="footer-contact-desc">มีข้อสงสัย หรือต้องการสอบถามข้อมูลเพิ่มเติม สามารถติดต่อเราได้ผ่านช่องทางด้านล่างนี้</p>
+            
+            <ul class="footer-contact-info">
+                <li><i class="fa-solid fa-envelope"></i> contact.swapandgo@gmail.com</li>
+                <li><i class="fa-solid fa-location-dot"></i> มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ</li>
+            </ul>
+
+            <div class="footer-social-icons">
+                    <a href="https://line.me/ti/p/edEMCFLm-k" class="footer-social-icon social-line"><i class="fa-brands fa-line"></i></a>
+                    <a href="https://www.instagram.com/yoxurth?stkn=MTA5b3k5a3kzOGQ1NA==" class="footer-social-icon social-ig"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1MLeNK6Gc1/?mibextid=wwXIfr" class="footer-social-icon social-fb"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+        </div>
+        <div class="footer-contact-right">
+            <img src="river.jpg" alt="RMUTTO Building">
+        </div>
+
+    </div>
+    <div class="footer-bottom-bar">
+        <p>&copy; 2026 Swap&go. All rights reserved. RMUTTO Student Marketplace.</p>
+    </div>
+</footer>

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swap&go - ตั้งค่าบัญชี</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: #fff;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #eee;
+        }
+
+        .navbar .logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #004d34;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: #004d34;
+            font-weight: 500;
+        }
+
+        .nav-search {
+            position: relative;
+            background: #eef2f3;
+            border-radius: 20px;
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 250px;
+        }
+
+        .nav-search input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        .nav-right-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-right-icons a,
+        .nav-right-icons i {
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-profile-link {
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-profile-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #ddd;
+            border: 1px solid #ccc;
+        }
+
+        .nav-profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 998;
+        }
+
+        .sidebar-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 260px;
+            height: 100%;
+            background: #fff;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            transition: left 0.3s ease;
+            z-index: 999;
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px 15px 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+        }
+
+        .sidebar-header h3 {
+            font-size: 1.1rem;
+            color: #004d34;
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: #555;
+            text-decoration: none;
+            font-size: 0.92rem;
+            transition: 0.2s;
+        }
+
+        .sidebar-menu li.active a,
+        .sidebar-menu li a:hover {
+            background: #e6f4ea;
+            color: #004d34;
+            font-weight: 500;
+            border-left: 4px solid #004d34;
+        }
+
+        .sidebar-divider {
+            margin: 15px 20px;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+
+        /* Main Settings Content Layout */
+        .main-container {
+            max-width: 700px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            flex: 1;
+            width: 100%;
+        }
+
+        .main-container h2 {
+            font-size: 1.3rem;
+            color: #222;
+            margin-bottom: 25px;
+        }
+
+        .profile-pic-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .avatar-placeholder {
+            width: 80px;
+            height: 80px;
+            background: #ccc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #fff;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .avatar-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .change-btn {
+            background: #fff;
+            border: 1.5px solid #004d34;
+            color: #004d34;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .change-btn:hover {
+            background: #e6f4ea;
+        }
+
+        .remove-btn {
+            background: #fff;
+            border: 1.5px solid #dc3545;
+            color: #dc3545;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .remove-btn:hover {
+            background: #f8d7da;
+        }
+
+        .file-hint {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Form Fields */
+        .form-group {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #004d34;
+        }
+
+        /* Save Button */
+        .save-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .save-btn {
+            background: #004d34;
+            color: #fff;
+            border: none;
+            padding: 10px 40px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .save-btn:hover {
+            background: #003825;
+        }
+
+        /* Responsive สำหรับมือถือ */
+        @media (max-width: 600px) {
+            .main-container {
+                padding: 20px 15px;
+                margin: 15px;
+            }
+            .form-group {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+            .nav-search {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>เมนูจัดการ</h3>
+            <button class="close-btn" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> หน้าแรก</a></li>
+            <li><a href="catalog.html"><i class="fa-solid fa-border-all"></i> สินค้าทั้งหมด</a></li>
+            <li><a href="category.html"><i class="fa-solid fa-list"></i> หมวดหมู่</a></li>
+            <li><a href="profile.html"><i class="fa-solid fa-user"></i> โปรไฟล์ของฉัน</a></li>
+            <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> ตะกร้าสินค้า</a></li>
+            <li><a href="shopping.html"><i class="fa-solid fa-bag-shopping"></i> การซื้อของฉัน</a></li>
+            <li><a href="my-reviews.html"><i class="fa-solid fa-star"></i> รีวิวของฉัน</a></li>
+            <li><a href="my-products.html"><i class="fa-solid fa-box"></i> สินค้าของฉัน</a></li>
+            <li class="active"><a href="account-settings.html"><i class="fa-solid fa-gear"></i> ตั้งค่าบัญชี</a></li>
+        </ul>
+        <hr class="sidebar-divider">
+        <ul class="sidebar-menu">
+            <li><a href="index-regis.html" style="color: #dc3545;"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
+        </ul>
+    </aside>
+
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i> Swap&go
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="catalog.html">สินค้าทั้งหมด</a></li>
+            <li><a href="category.html">หมวดหมู่</a></li>
+        </ul>
+        <div class="nav-search">
+            <i class="fa-solid fa-magnifying-glass" style="color: #888; font-size: 0.85rem;"></i>
+            <input type="text" placeholder="ค้นหา...">
+        </div>
+        <div class="nav-right-icons">
+            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+        
+            <a href="profile.html" class="nav-profile-link">
+                <div class="nav-profile-circle" id="nav-profile-container">
+                    <i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>
+                </div>
+            </a>
+            <i class="fa-solid fa-bars" id="menu-toggle" style="cursor: pointer;" title="เปิด/ปิดเมนู"></i>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <h2>ข้อมูลส่วนตัว</h2>
+        
+        <div class="profile-pic-section">
+            <div class="avatar-placeholder" id="avatar-container">
+                <i class="fa-solid fa-user" id="default-avatar-icon"></i>
+            </div>
+            <div>
+                <div class="btn-group">
+                    <button type="button" class="change-btn" id="change-pic-btn">เปลี่ยนรูปภาพ</button>
+                    <button type="button" class="remove-btn" id="remove-pic-btn">ลบรูปภาพ</button>
+                </div>
+                <input type="file" id="file-input" accept="image/*" style="display: none;">
+                <div class="file-hint">ไฟล์ JPG, PNG ขนาดไม่เกิน 5 MB</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>ชื่อ-นามสกุล</label>
+            <input type="text" id="fullname" placeholder="กรอกชื่อ-นามสกุลของคุณ">
+        </div>
+        <div class="form-group">
+            <label>รหัสนักศึกษา</label>
+            <input type="text" id="student-id" placeholder="กรอกรหัสนักศึกษา">
+        </div>
+        <div class="form-group">
+            <label>เบอร์โทรศัพท์</label>
+            <input type="text" id="phone" placeholder="08xxxxxxxx">
+        </div>
+        <div class="form-group">
+            <label>คณะ</label>
+            <input type="text" id="faculty" placeholder="เช่น คณะบริหารธุรกิจ...">
+        </div>
+        <div class="form-group">
+            <label>ชั้นปี</label>
+            <input type="text" id="year" placeholder="เช่น ปี 3">
+        </div>
+
+        <div class="save-container">
+            <button type="button" class="save-btn" id="save-btn">บันทึกข้อมูล</button>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-contact-container">
+            <div class="footer-contact-left">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-graduation-cap"></i> Swap&go
+                </div>
+                <h3 class="footer-contact-title">ติดต่อเรา</h3>
+                <p class="footer-contact-desc">มีข้อสงสัย หรือต้องการสอบถามข้อมูลเพิ่มเติม สามารถติดต่อเราได้ผ่านช่องทางด้านล่างนี้</p>
+                
+                <ul class="footer-contact-info">
+                    <li><i class="fa-solid fa-envelope"></i> contact.swapandgo@gmail.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ</li>
+                </ul>
+
+                <div class="footer-social-icons">
+                    <a href="https://line.me/ti/p/edEMCFLm-k" class="footer-social-icon social-line"><i class="fa-brands fa-line"></i></a>
+                    <a href="https://www.instagram.com/yoxurth?stkn=MTA5b3k5a3kzOGQ1NA==" class="footer-social-icon social-ig"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1MLeNK6Gc1/?mibextid=wwXIfr" class="footer-social-icon social-fb"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-contact-right">
+                <img src="river.jpg" alt="RMUTTO Building">
+            </div>
+        </div>
+        <div class="footer-bottom-bar">
+            <p>&copy; 2026 Swap&go. All rights reserved. RMUTTO Student Marketplace.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedData = JSON.parse(localStorage.getItem('userAccountSettings')) || {};
+            const navProfileContainer = document.getElementById('nav-profile-container');
+
+            if (navProfileContainer) {
+                if (savedData.avatarImage) {
+                    navProfileContainer.innerHTML = `<img src="${savedData.avatarImage}" alt="Profile">`;
+                } else {
+                    navProfileContainer.innerHTML = `<i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>`;
+                }
+            }
+
+            const fullnameInput = document.getElementById('fullname');
+            const studentIdInput = document.getElementById('student-id');
+            const phoneInput = document.getElementById('phone');
+            const facultyInput = document.getElementById('faculty');
+            const yearInput = document.getElementById('year');
+            
+            const avatarContainer = document.getElementById('avatar-container');
+            const changePicBtn = document.getElementById('change-pic-btn');
+            const removePicBtn = document.getElementById('remove-pic-btn');
+            const fileInput = document.getElementById('file-input');
+            const saveBtn = document.getElementById('save-btn');
+
+            let tempAvatarImage = '';
+
+            function updateAvatarDisplay(imageSrc) {
+                if (imageSrc) {
+                    avatarContainer.innerHTML = `<img src="${imageSrc}" alt="Profile Picture">`;
+                    if (navProfileContainer) {
+                        navProfileContainer.innerHTML = `<img src="${imageSrc}" alt="Profile">`;
+                    }
+                } else {
+                    avatarContainer.innerHTML = `<i class="fa-solid fa-user"></i>`;
+                    if (navProfileContainer) {
+                        navProfileContainer.innerHTML = `<i class="fa-solid fa-user" style="font-size: 1rem; color: #555;"></i>`;
+                    }
+                }
+            }
+
+            if (savedData.fullname) fullnameInput.value = savedData.fullname;
+            if (savedData.studentId) studentIdInput.value = savedData.studentId;
+            if (savedData.phone) phoneInput.value = savedData.phone;
+            if (savedData.faculty) facultyInput.value = savedData.faculty;
+            if (savedData.year) yearInput.value = savedData.year;
+
+            if (savedData.avatarImage) {
+                tempAvatarImage = savedData.avatarImage;
+                updateAvatarDisplay(tempAvatarImage);
+            }
+
+            changePicBtn.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    if (file.size > 5 * 1024 * 1024) {
+                        alert("ขนาดไฟล์ใหญ่เกิน 5 MB กรุณาเลือกไฟล์ใหม่");
+                        return;
+                    }
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        tempAvatarImage = e.target.result;
+                        updateAvatarDisplay(tempAvatarImage);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            removePicBtn.addEventListener('click', () => {
+                tempAvatarImage = '';
+                fileInput.value = '';
+                updateAvatarDisplay('');
+            });
+
+            saveBtn.addEventListener('click', () => {
+                const dataToSave = {
+                    fullname: fullnameInput.value,
+                    studentId: studentIdInput.value,
+                    phone: phoneInput.value,
+                    faculty: facultyInput.value,
+                    year: yearInput.value,
+                    avatarImage: tempAvatarImage
+                };
+
+                localStorage.setItem('userAccountSettings', JSON.stringify(dataToSave));
+                alert("บันทึกข้อมูลเรียบร้อยแล้ว!");
+            });
+        });
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const closeBtn = document.getElementById('close-btn');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.add('active');
+                sidebarOverlay.classList.add('active');
+            });
+        }
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeSidebar);
+        }
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', closeSidebar);
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+        }
+    </script>
+</body>
+</html>

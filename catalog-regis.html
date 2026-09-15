@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ค้นหาสินค้า - Swap&go</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i> Swap&go
+        </div>
+        <ul class="nav-links">
+            <li><a href="index-regis.html">หน้าแรก</a></li>
+            <li><a href="catalog-regis.html" class="active">สินค้าทั้งหมด</a></li>
+            <li><a href="category-regis.html">หมวดหมู่</a></li>
+        </ul>
+        <div class="nav-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="ค้นหา...">
+        </div>
+        <div class="auth-buttons">
+            <a href="login.html" class="btn-login">เข้าสู่ระบบ</a>
+        </div>
+    </header>
+    <main class="catalog-container">
+        <aside class="sidebar-filter">
+         <div class="filter-group">
+                <h3 class="filter-title">หมวดหมู่</h3>
+                <ul class="checkbox-list">
+                    <li class="checkbox-item"><input type="checkbox" id="cat-book"> <label for="cat-book">หนังสือ</label></li>
+                    <li class="checkbox-item"><input type="checkbox" id="cat-it"> <label for="cat-it">อุปกรณ์ไอที</label></li>
+                    <li class="checkbox-item"><input type="checkbox" id="cat-cloth"> <label for="cat-cloth">เสื้อผ้า</label></li>
+                    <li class="checkbox-item"><input type="checkbox" id="cat-study"> <label for="cat-study">อุปกรณ์การเรียน</label></li>
+                    <li class="checkbox-item"><input type="checkbox" id="cat-dorm"> <label for="cat-dorm">ของใช้ในหอ</label></li>
+                    <li class="checkbox-item"><input type="checkbox" id="cat-personal"> <label for="cat-personal">ของใช้ส่วนตัว</label></li>
+                    <li class="checkbox-item"><input type="checkbox" id="cat-other"> <label for="cat-other">อื่นๆ</label></li>
+                </ul>
+            </div>
+            <div class="filter-group">
+                <h3 class="filter-title">ช่วงราคา</h3>
+                <div class="price-slider-wrapper">
+                
+                    <input type="range" id="priceSlider" min="0" max="5000" value="5000" class="price-slider">
+                    <div class="price-labels">
+                        <span id="minPrice">0</span>
+            
+                        <span id="maxPrice">5000</span>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-group">
+                <h3 class="filter-title">สภาพสินค้า</h3>
+                <ul class="checkbox-list">
+                    <li class="checkbox-item"><input type="checkbox" id="cond-good"> <label for="cond-good">มือสอง-สภาพดี</label></li>
+                    <li class="checkbox-item"><input type="checkbox" id="cond-used"> <label for="cond-used">มือสอง-ร่องรอย</label></li>
+                </ul>
+            </div>
+            <button class="btn-filter-search">ค้นหา</button>
+        </aside>
+
+        <section class="catalog-content">
+            <div class="catalog-header">
+                <div class="catalog-title-group">
+                    <h1 class="catalog-title">สินค้าทั้งหมด</h1>
+                    <span class="item-count">(105 รายการ)</span>
+                </div>
+                <div class="sort-dropdown">
+                    <span>เรียงตาม:</span>
+                    <select>
+                        <option>ล่าสุด</option>
+                        <option>ราคา: ต่ำไปสูง</option>
+                        <option>ราคา: สูงไปต่ำ</option>
+                    </select>
+                </div>
+            </div>
+            <div class="catalog-grid">
+                <div class="catalog-card">
+                    <div class="catalog-img-container">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=400" alt="ชื่อสินค้า">
+                    </div>
+                    <div class="catalog-card-info">
+                        <h3 class="catalog-card-title">ชื่อสินค้า</h3>
+                        <div class="catalog-card-bottom">
+                            <span class="catalog-card-price">฿250</span>
+                        </div>
+                    </div>
+                </div>
+
+            
+                <div class="catalog-card">
+                    <div class="catalog-img-container">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=400" alt="ชื่อสินค้า">
+                    </div>
+                    <div class="catalog-card-info">
+                        <h3 class="catalog-card-title">ชื่อสินค้า</h3>
+                        <div class="catalog-card-bottom">
+                            <span class="catalog-card-price">฿250</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="catalog-card">
+                    <div class="catalog-img-container">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=400" alt="ชื่อสินค้า">
+                    </div>
+                    <div class="catalog-card-info">
+                        <h3 class="catalog-card-title">ชื่อสินค้า</h3>
+                        <div class="catalog-card-bottom">
+                            <span class="catalog-card-price">฿250</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="catalog-card">
+                    <div class="catalog-img-container">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=400" alt="ชื่อสินค้า">
+                    </div>
+                    <div class="catalog-card-info">
+                        <h3 class="catalog-card-title">ชื่อสินค้า</h3>
+                        <div class="catalog-card-bottom">
+                            <span class="catalog-card-price">฿250</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="catalog-card">
+                    <div class="catalog-img-container">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=400" alt="ชื่อสินค้า">
+                    </div>
+                    <div class="catalog-card-info">
+                        <h3 class="catalog-card-title">ชื่อสินค้า</h3>
+                        <div class="catalog-card-bottom">
+                            <span class="catalog-card-price">฿250</span>                      
+                        </div>
+                    </div>
+                </div>
+
+                <div class="catalog-card">
+                    <div class="catalog-img-container">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=400" alt="ชื่อสินค้า">
+                    </div>
+                    <div class="catalog-card-info">
+                        <h3 class="catalog-card-title">ชื่อสินค้า</h3>
+                        <div class="catalog-card-bottom">
+                            <span class="catalog-card-price">฿250</span>
+                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const priceSlider = document.getElementById('priceSlider');
+        const maxPriceLabel = document.getElementById('maxPrice');
+    
+        if (priceSlider && maxPriceLabel) {
+            priceSlider.addEventListener('input', function() {
+                maxPriceLabel.textContent = this.value;
+            });
+        }
+    </script>
+</body>
+</html>
+<footer class="site-footer">
+    <div class="footer-contact-container">
+        
+        <div class="footer-contact-left">
+            <div class="footer-logo">
+                <i class="fa-solid fa-graduation-cap"></i> Swap&go
+            </div>
+            <h3 class="footer-contact-title">ติดต่อเรา</h3>
+            <p class="footer-contact-desc">มีข้อสงสัย หรือต้องการสอบถามข้อมูลเพิ่มเติม สามารถติดต่อเราได้ผ่านช่องทางด้านล่างนี้</p>
+            
+            <ul class="footer-contact-info">
+                <li><i class="fa-solid fa-envelope"></i> contact.swapandgo@gmail.com</li>
+                <li><i class="fa-solid fa-location-dot"></i> มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ</li>
+            </ul>
+
+            <div class="footer-social-icons">
+                    <a href="https://line.me/ti/p/edEMCFLm-k" class="footer-social-icon social-line"><i class="fa-brands fa-line"></i></a>
+                    <a href="https://www.instagram.com/yoxurth?stkn=MTA5b3k5a3kzOGQ1NA==" class="footer-social-icon social-ig"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1MLeNK6Gc1/?mibextid=wwXIfr" class="footer-social-icon social-fb"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+        </div>
+        <div class="footer-contact-right">
+            <img src="river.jpg" alt="RMUTTO Building">
+        </div>
+
+    </div>
+    <div class="footer-bottom-bar">
+        <p>&copy; 2026 Swap&go. All rights reserved. RMUTTO Student Marketplace.</p>
+    </div>
+</footer>
