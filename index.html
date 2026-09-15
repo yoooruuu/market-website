@@ -92,25 +92,6 @@
             color: #333;
             text-decoration: none;
             cursor: pointer;
-            position: relative;
-        }
-
-        /* ปุ่มเข้าสู่ระบบกรณีที่ยังไม่ล็อกอิน */
-        .btn-login-nav {
-            background-color: #fff;
-            color: #004d34;
-            border: 1px solid #004d34;
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .btn-login-nav:hover {
-            background-color: #004d34;
-            color: #fff;
         }
 
         .nav-profile-link {
@@ -227,362 +208,10 @@
             border: none;
             border-top: 1px solid #eee;
         }
-
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 450px;
-            display: flex;
-            align-items: center;
-            padding: 0 50px;
-            overflow: hidden;
-        }
-
-        .hero-bg-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 2;
-        }
-
-        .hero-card {
-            position: relative;
-            z-index: 3;
-            background: #fff;
-            padding: 35px;
-            border-radius: 16px;
-            max-width: 450px;
-            width: 100%;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-
-        .hero-card h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #222;
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
-
-        .hero-card p {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .hero-search-box {
-            display: flex;
-            align-items: center;
-            border: 1px solid #cbd5e1;
-            border-radius: 30px;
-            overflow: hidden;
-            padding-left: 15px;
-            background: #fff;
-        }
-
-        .hero-search-box input {
-            flex: 1;
-            border: none;
-            outline: none;
-            padding: 10px 0;
-            font-size: 0.95rem;
-        }
-
-        .hero-search-box button {
-            background: #004d34;
-            color: #fff;
-            border: none;
-            width: 45px;
-            height: 45px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            transition: 0.2s;
-        }
-
-        .hero-search-box button:hover {
-            background: #003825;
-        }
-
-        .features {
-            display: flex;
-            justify-content: space-around;
-            padding: 40px 20px;
-            background: #fff;
-            max-width: 1100px;
-            margin: -30px auto 30px auto;
-            position: relative;
-            z-index: 10;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        .feature-item {
-            text-align: center;
-        }
-
-        .feature-icon {
-            font-size: 1.8rem;
-            color: #004d34;
-            margin-bottom: 8px;
-        }
-
-        .feature-item h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .feature-item p {
-            font-size: 0.85rem;
-            color: #666;
-        }
-
-        .products-section {
-            max-width: 1100px;
-            margin: 0 auto 40px auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #222;
-        }
-
-        .product-grid {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .about-section {
-            background: #fff;
-            padding: 40px 20px;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .about-banner {
-            position: relative;
-            height: 250px;
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            margin-bottom: 20px;
-            max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .about-bg-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
-
-        .about-banner::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.4);
-            z-index: 2;
-        }
-
-        .about-banner h2 {
-            position: relative;
-            z-index: 3;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto 30px auto;
-        }
-
-        .about-content h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #004d34;
-        }
-
-        .about-content p {
-            font-size: 0.95rem;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .features-bottom {
-            margin: 0 auto;
-            box-shadow: none;
-            border: 1px solid #eee;
-        }
-
-        .site-footer {
-            background-color: #1a1a1a;
-            color: #fff;
-            padding: 50px 0 0 0;
-            margin-top: auto;
-            width: 100%;
-        }
-        .footer-contact-container {
-            max-width: 1100px !important;
-            width: 90% !important;
-            margin: 0 auto !important;
-            background-color: #004d34 !important;
-            border-radius: 12px !important;
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-            padding: 40px 50px !important;
-            gap: 40px !important;
-            box-sizing: border-box !important;
-        }
-        .footer-contact-left {
-            flex: 1;
-        }
-        .footer-logo {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #004d34;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 15px;
-            background: #fff;
-            width: fit-content;
-            padding: 5px 12px;
-            border-radius: 6px;
-        }
-        .footer-contact-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-        .footer-contact-desc {
-            font-size: 0.9rem;
-            color: #e2e8f0;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        .footer-contact-info {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 20px 0;
-        }
-        .footer-contact-info li {
-            font-size: 0.9rem;
-            color: #fff;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .footer-social-icons {
-            display: flex;
-            gap: 12px;
-        }
-        .footer-social-icon {
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-        .footer-social-icon:hover {
-            background: #fff;
-            color: #004d34;
-        }
-        .footer-contact-right {
-            flex-shrink: 0;
-        }
-        .footer-contact-right img {
-            width: 320px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-        .footer-bottom-bar {
-            background-color: #111;
-            text-align: center;
-            padding: 15px 20px;
-            font-size: 0.85rem;
-            color: #777;
-            border-top: 1px solid #282828;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                height: auto;
-                padding: 30px 20px;
-            }
-            .hero-card {
-                max-width: 100%;
-            }
-            .footer-contact-container {
-                flex-direction: column !important;
-                text-align: center;
-                padding: 30px 20px !important;
-            }
-            .footer-logo {
-                margin: 0 auto 15px auto;
-            }
-            .footer-contact-info li {
-                justify-content: center;
-            }
-            .footer-social-icons {
-                justify-content: center;
-            }
-            .footer-contact-right img {
-                width: 100%;
-                max-width: 320px;
-            }
-            .nav-search {
-                display: none;
-            }
-            .features {
-                flex-direction: column;
-                gap: 20px;
-            }
-        }
     </style>
 </head>
 <body>
+
 
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
@@ -604,10 +233,9 @@
         </ul>
         <hr class="sidebar-divider">
         <ul class="sidebar-menu">
-            <li><a href="index-regis.html" id="logout-btn" style="color: #dc3545;"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
+            <li><a href="index-regis.html" style="color: #dc3545;"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
         </ul>
     </aside>
-
     <header class="navbar">
         <div class="logo">
             <i class="fa-solid fa-graduation-cap"></i> Swap&go
@@ -621,11 +249,17 @@
             <i class="fa-solid fa-magnifying-glass" style="color: #888; font-size: 0.85rem;"></i>
             <input type="text" placeholder="ค้นหา...">
         </div>
-        <div class="nav-right-icons" id="nav-right-container">
-            <!-- JavaScript จะสลับการแสดงผลตรงนี้ -->
+        <div class="nav-right-icons">
+            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+        
+            <a href="profile.html" class="nav-profile-link">
+                <div class="nav-profile-circle" id="nav-profile-container">
+                    <i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>
+                </div>
+            </a>
+            <i class="fa-solid fa-bars" id="menu-toggle" style="cursor: pointer;" title="เปิด/ปิดเมนู"></i>
         </div>
     </header>
-
     <header class="hero">
         <img src="hh.jpg" alt="แบนเนอร์หลัก" class="hero-bg-img">
         <div class="hero-card">
@@ -666,7 +300,6 @@
         <h2 class="section-title">สินค้าล่าสุด</h2>
         <div class="product-grid" id="product-grid"></div>
     </main>
-
     <section class="about-section">
         <div class="about-banner">
             <img src="22 (2).jpg" alt="เกี่ยวกับเรา" class="about-bg-img">
@@ -699,7 +332,6 @@
             </div>
         </div>
     </section>
-
     <footer class="site-footer">
         <div class="footer-contact-container">
             <div class="footer-contact-left">
@@ -717,7 +349,7 @@
                 <div class="footer-social-icons">
                     <a href="https://line.me/ti/p/edEMCFLm-k" class="footer-social-icon social-line"><i class="fa-brands fa-line"></i></a>
                     <a href="https://www.instagram.com/yoxurth?stkn=MTA5b3k5a3kzOGQ1NA==" class="footer-social-icon social-ig"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/share/1MLeNK6Gc1/?mibextid=wwXIfr" class="footer-social-icon social-fb"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/share/1MLeNK6Gc1/?mibextid=wwgit branch -M mainXIfr" class="footer-social-icon social-fb"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
             <div class="footer-contact-right">
@@ -728,67 +360,44 @@
             <p>&copy; 2026 Swap&go. All rights reserved. RMUTTO Student Marketplace.</p>
         </div>
     </footer>
-
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const savedData = JSON.parse(localStorage.getItem('userAccountSettings')) || {};
-            const navRightContainer = document.getElementById('nav-right-container');
+            const navProfileContainer = document.getElementById('nav-profile-container');
 
-            const isLoggedIn = savedData.avatarImage || savedData.name || localStorage.getItem('isLoggedIn') === 'true';
-
-            if (isLoggedIn) {
-                navRightContainer.innerHTML = `
-                    <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
-                    <a href="profile.html" class="nav-profile-link">
-                        <div class="nav-profile-circle" id="nav-profile-container">
-                            ${savedData.avatarImage ? `<img src="${savedData.avatarImage}" alt="Profile">` : `<i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>`}
-                        </div>
-                    </a>
-                    <i class="fa-solid fa-bars" id="menu-toggle" style="cursor: pointer;" title="เปิด/ปิดเมนู"></i>
-                `;
-            } else {
-                navRightContainer.innerHTML = `
-                    <a href="index-regis.html" class="btn-login-nav">เข้าสู่ระบบ</a>
-                    <i class="fa-solid fa-bars" id="menu-toggle" style="cursor: pointer;" title="เปิด/ปิดเมนู"></i>
-                `;
+            if (navProfileContainer) {
+                if (savedData.avatarImage) {
+                    navProfileContainer.innerHTML = `<img src="${savedData.avatarImage}" alt="Profile">`;
+                } else {
+                    navProfileContainer.innerHTML = `<i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>`;
+                }
             }
 
             loadLatestProducts();
-
-            const menuToggle = document.getElementById('menu-toggle');
-            const sidebar = document.getElementById('sidebar');
-            const sidebarOverlay = document.getElementById('sidebar-overlay');
-            const closeBtn = document.getElementById('close-btn');
-
-            if (menuToggle) {
-                menuToggle.addEventListener('click', () => {
-                    sidebar.classList.add('active');
-                    sidebarOverlay.classList.add('active');
-                });
-            }
-            if (closeBtn) {
-                closeBtn.addEventListener('click', closeSidebar);
-            }
-            if (sidebarOverlay) {
-                sidebarOverlay.addEventListener('click', closeSidebar);
-            }
-
-            const logoutBtn = document.getElementById('logout-btn');
-            if (logoutBtn) {
-                logoutBtn.addEventListener('click', () => {
-                    localStorage.removeItem('userAccountSettings');
-                    localStorage.removeItem('isLoggedIn');
-                });
-            }
         });
 
-        function closeSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const sidebarOverlay = document.getElementById('sidebar-overlay');
-            if (sidebar) sidebar.classList.remove('active');
-            if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const closeBtn = document.getElementById('close-btn');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.add('active');
+                sidebarOverlay.classList.add('active');
+            });
+        }
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeSidebar);
+        }
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', closeSidebar);
         }
 
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+        }
         function loadLatestProducts() {
             const productGrid = document.getElementById("product-grid");
             if (!productGrid) return;
