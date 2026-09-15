@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ลงขายสินค้า - Swap&go</title>
-    <!-- Google Fonts: Kanit -->
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -25,7 +23,7 @@
             min-height: 100vh;
         }
 
-        /* --- Navbar ด้านบน --- */
+
         .navbar {
             background: #fff;
             height: 60px;
@@ -101,7 +99,7 @@
             cursor: pointer;
         }
 
-        /* --- Navbar Profile Icon & Image Style --- */
+    
         .nav-profile-link {
             color: inherit;
             text-decoration: none;
@@ -127,7 +125,6 @@
             object-fit: cover;
         }
 
-        /* --- Sidebar สำหรับมือถือและจอเล็ก --- */
         .sidebar-overlay {
             position: fixed;
             top: 0;
@@ -218,7 +215,6 @@
             border-top: 1px solid #eee;
         }
 
-        /* --- ฟอร์มลงขายสินค้า --- */
         .main-container {
             max-width: 750px;
             margin: 35px auto;
@@ -243,7 +239,7 @@
             margin-bottom: 20px;
         }
 
-        /* --- กล่องอัปโหลดรูปภาพ --- */
+
         .upload-box {
             border: 2px dashed #cbd5e1;
             border-radius: 10px;
@@ -275,7 +271,7 @@
             font-weight: 500;
         }
 
-        /* --- ฟิลด์กรอกข้อมูล --- */
+     
         .form-group {
             margin-bottom: 20px;
         }
@@ -322,7 +318,7 @@
             height: 110px;
         }
 
-        /* --- ตัวเลือกสภาพสินค้า --- */
+     
         .condition-options {
             display: flex;
             gap: 30px;
@@ -344,7 +340,7 @@
             accent-color: #004d34;
         }
 
-        /* --- ปุ่มลงประกาศ --- */
+    
         .btn-submit {
             width: 100%;
             background: #004d34;
@@ -366,10 +362,7 @@
 </head>
 <body>
 
-    <!-- พื้นหลังมืดตอนเปิด Sidebar -->
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
-
-    <!-- แถบ Sidebar ด้านซ้าย -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h3>เมนูจัดการ</h3>
@@ -409,31 +402,29 @@
         <div class="nav-right-icons">
             <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
             
-            <!-- ไอคอนโปรไฟล์บน Navbar ที่จะแปลงเป็นรูปภาพอัตโนมัติ -->
+          
             <a href="account-settings.html" class="nav-profile-link">
                 <div class="nav-profile-circle" id="nav-profile-container">
                     <i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>
                 </div>
             </a>
 
-            <!-- ปุ่มไอคอน 3 ขีด เปิด/ปิด Sidebar -->
+
             <i class="fa-solid fa-bars" id="menu-toggle" title="เปิด/ปิดเมนู" style="cursor: pointer;"></i>
         </div>
     </header>
-
-    <!-- ฟอร์มลงขายสินค้า -->
     <main class="main-container">
         <h1 class="form-title">ลงขายสินค้า</h1>
         <p class="form-subtitle">อัปโหลดรูปภาพ (สูงสุด 5 รูป)</p>
 
-        <!-- กล่องอัปโหลดรูป -->
+     
         <div class="upload-box" onclick="document.getElementById('file-input').click()">
             <i class="fa-solid fa-plus"></i>
             <span>เพิ่มรูปภาพ (สูงสุด 5 รูป)</span>
             <input type="file" id="file-input" style="display: none;" accept="image/*" multiple>
         </div>
 
-        <!-- ส่วนแสดงตัวอย่างรูปภาพที่เลือก -->
+    
         <div id="image-preview-container" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;"></div>
 
         <form id="add-product-form">
@@ -477,7 +468,6 @@
         </form>
     </main>
 
-    <!-- Footer ดึงดีไซน์จากไฟล์ style.css เช่นเดียวกับหน้า Index -->
     <footer class="site-footer">
         <div class="footer-contact-container">
             <div class="footer-contact-left">
