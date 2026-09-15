@@ -113,7 +113,7 @@
             border-top: 1px solid #eee;
         }
 
-        /* --- Navbar Styles --- */
+  
         .navbar {
             background: #fff;
             height: 60px;
@@ -196,7 +196,7 @@
             border-radius: 50%;
         }
 
-        /* --- Navbar Profile Icon & Image Style --- */
+   
         .nav-profile-link {
             color: inherit;
             text-decoration: none;
@@ -222,7 +222,7 @@
             object-fit: cover;
         }
 
-        /* --- Main Container & Order Card Styles --- */
+    
         .main-container {
             max-width: 900px;
             margin: 30px auto;
@@ -342,10 +342,10 @@
 </head>
 <body>
 
-    <!-- พื้นหลังมืดตอนเปิด Sidebar -->
+
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-    <!-- แถบ Sidebar ด้านซ้าย -->
+   
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h3>เมนูจัดการ</h3>
@@ -368,7 +368,7 @@
         </ul>
     </aside>
 
-    <!-- Navbar ด้านบน -->
+  
     <header class="navbar">
         <div class="logo">
             <i class="fa-solid fa-graduation-cap"></i> Swap&go
@@ -388,7 +388,7 @@
                 <span class="cart-badge" id="cart-badge" style="display: none;">0</span>
             </a>
             
-            <!-- ไอคอนโปรไฟล์บน Navbar (ซิงค์อัตโนมัติ) -->
+        
             <a href="account-settings.html" class="nav-profile-link">
                 <div class="nav-profile-circle" id="nav-profile-container">
                     <i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>
@@ -399,17 +399,16 @@
         </div>
     </header>
 
-    <!-- คอนเทนต์หน้าหลัก -->
     <main class="main-container">
         <h2 class="page-title">รายการซื้อทั้งหมด</h2>
         
-        <!-- พื้นที่สำหรับแสดงรายการซื้อจริงจาก LocalStorage -->
+       
         <div id="purchase-list-container">
-            <!-- ข้อมูลจะถูกโหลดมาแสดงที่นี่อัตโนมัติ -->
+        
         </div>
     </main>
 
-    <!-- Footer -->
+ 
    <footer class="site-footer">
     <div class="footer-contact-container">
         
@@ -440,10 +439,9 @@
         <p>&copy; 2026 Swap&go. All rights reserved. RMUTTO Student Marketplace.</p>
     </div>
 </footer>
-    <!-- Script ดึงข้อมูลจริงจากระบบ -->
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. อัปเดตตัวเลขแจ้งเตือนจำนวนสินค้าในตะกร้าจริงจาก localStorage
             const cart = JSON.parse(localStorage.getItem('cartItems')) || JSON.parse(localStorage.getItem('cart')) || [];
             let totalCartCount = 0;
             cart.forEach(item => {
@@ -460,7 +458,6 @@
                 }
             }
 
-            // 2. โหลดรูปโปรไฟล์มาแสดงที่ Navbar อัตโนมัติ
             const savedData = JSON.parse(localStorage.getItem('userAccountSettings')) || {};
             const navProfileContainer = document.getElementById('nav-profile-container');
 
@@ -472,7 +469,6 @@
                 }
             }
 
-            // 3. ดึงประวัติการสั่งซื้อจริงจากคีย์ 'orderHistory' ใน localStorage
             const container = document.getElementById('purchase-list-container');
             const orders = JSON.parse(localStorage.getItem('orderHistory')) || [];
 
@@ -533,7 +529,7 @@
             container.innerHTML = htmlContent;
         });
 
-        // 4. ควบคุม Sidebar
+     
         const menuToggle = document.getElementById('menu-toggle');
         const closeBtn = document.getElementById('close-btn');
         const sidebar = document.getElementById('sidebar');
