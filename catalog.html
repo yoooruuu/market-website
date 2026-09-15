@@ -347,7 +347,315 @@
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 20px;
         }
-    </style>
+    
+
+        /* ===== Responsive สำหรับหน้านี้ ===== */
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .catalog-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .catalog-content {
+            min-width: 0;
+        }
+
+        .product-grid {
+            width: 100%;
+        }
+
+        @media (max-width: 1100px) {
+            .navbar {
+                padding: 0 20px;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .nav-search {
+                width: 210px;
+            }
+
+            .catalog-container {
+                gap: 20px;
+            }
+
+            .sidebar-filter {
+                width: 230px;
+                flex-shrink: 0;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                height: auto;
+                min-height: 60px;
+                padding: 10px 15px;
+                flex-wrap: wrap;
+            }
+
+            .navbar .logo {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .navbar .logo a {
+                font-size: 1.05rem;
+                white-space: nowrap;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-search {
+                order: 3;
+                width: 100%;
+                height: 38px;
+                margin-top: 5px;
+            }
+
+            .nav-right-icons {
+                gap: 14px;
+                flex-shrink: 0;
+            }
+
+            .catalog-container {
+                flex-direction: column;
+                width: 100%;
+                margin: 20px auto;
+                padding: 0 15px;
+                gap: 20px;
+            }
+
+            .sidebar-filter {
+                width: 100%;
+                padding: 18px;
+            }
+
+            .filter-group {
+                margin-bottom: 20px;
+            }
+
+            .checkbox-list {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
+
+            .catalog-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+                padding: 15px;
+            }
+
+            .catalog-title-group {
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .sort-dropdown {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .sort-dropdown select {
+                flex: 1;
+                min-width: 0;
+                max-width: 200px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .product-card {
+                padding: 10px !important;
+            }
+
+            .product-card img {
+                height: 140px !important;
+            }
+
+            .site-footer {
+                margin-top: 30px !important;
+            }
+
+            .footer-contact-container {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .footer-contact-left,
+            .footer-contact-right {
+                width: 100%;
+            }
+
+            .footer-contact-right img {
+                width: 100%;
+                height: auto;
+            }
+
+            .footer-bottom-bar {
+                text-align: center;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 9px 12px;
+            }
+
+            .navbar .logo a {
+                font-size: 0.95rem;
+            }
+
+            .nav-right-icons {
+                gap: 10px;
+                font-size: 1.05rem;
+            }
+
+            .nav-profile-circle {
+                width: 28px;
+                height: 28px;
+            }
+
+            .catalog-container {
+                padding: 0 10px;
+                margin: 15px auto;
+            }
+
+            .sidebar-filter {
+                padding: 15px;
+                border-radius: 8px;
+            }
+
+            .checkbox-list {
+                grid-template-columns: 1fr;
+                gap: 9px;
+            }
+
+            .filter-title {
+                font-size: 1.05rem;
+            }
+
+            .catalog-header {
+                padding: 12px;
+                border-radius: 8px;
+            }
+
+            .catalog-title {
+                font-size: 1.1rem;
+            }
+
+            .item-count {
+                font-size: 0.82rem;
+            }
+
+            .sort-dropdown {
+                font-size: 0.85rem;
+            }
+
+            .sort-dropdown select {
+                max-width: 170px;
+                padding: 6px 8px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 8px;
+            }
+
+            .product-card {
+                padding: 8px !important;
+                border-radius: 8px !important;
+            }
+
+            .product-card img {
+                height: 115px !important;
+                border-radius: 6px !important;
+                margin-bottom: 7px !important;
+            }
+
+            .product-card div[style*="-webkit-line-clamp"] {
+                font-size: 0.82rem !important;
+            }
+
+            .product-card div[style*="font-size: 1rem"] {
+                font-size: 0.9rem !important;
+            }
+
+            .footer-contact-container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .footer-contact-desc {
+                font-size: 0.85rem;
+            }
+
+            .footer-contact-info {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .navbar .logo a {
+                font-size: 0.88rem;
+            }
+
+            .nav-right-icons {
+                gap: 7px;
+                font-size: 0.95rem;
+            }
+
+            .nav-profile-circle {
+                width: 26px;
+                height: 26px;
+            }
+
+            .product-grid {
+                gap: 6px;
+            }
+
+            .product-card {
+                padding: 6px !important;
+            }
+
+            .product-card img {
+                height: 100px !important;
+            }
+
+            .catalog-title {
+                font-size: 1rem;
+            }
+
+            .item-count {
+                font-size: 0.75rem;
+            }
+        }
+
+</style>
 </head>
 <body>
 
@@ -381,7 +689,7 @@
     <header class="navbar">
         <div class="logo">
             <a href="index.html">
-                <i class="fa-solid fa-graduation-cap"></i> StudentMarket
+                <i class="fa-solid fa-graduation-cap"></i> Swap&go
             </a>
         </div>
         <ul class="nav-links">
@@ -395,8 +703,7 @@
         </div>
         <div class="nav-right-icons">
             <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
-            
-            <!-- ไอคอนโปรไฟล์บน Navbar (ซิงค์อัตโนมัติ) -->
+        
             <a href="account-settings.html" class="nav-profile-link">
                 <div class="nav-profile-circle" id="nav-profile-container">
                     <i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>
@@ -407,11 +714,11 @@
         </div>
     </header>
 
-    <!-- ส่วนเนื้อหาหลัก -->
+  
     <main class="catalog-container">
-        <!-- แถบกรองข้อมูลด้านซ้าย -->
+
         <aside class="sidebar-filter">
-            <!-- หมวดหมู่ -->
+           
             <div class="filter-group">
                 <h3 class="filter-title">หมวดหมู่</h3>
                 <ul class="checkbox-list">
