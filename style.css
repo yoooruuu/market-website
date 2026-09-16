@@ -5452,3 +5452,17 @@ textarea {
 body.register-body .nav-search {
     display: none !important;
 }
+
+@media screen and (max-width: 768px) {
+    .header-container {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+    }
+    
+    .search-box {
+        position: relative; 
+        width: 90%;         
+        margin: 10px auto;  
+    }
+}
