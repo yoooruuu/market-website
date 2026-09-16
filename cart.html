@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ตะกร้าสินค้า - Swap&go</title>
-    <link rel="icon" type="image/png" href="logo.png">
+     <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -120,10 +120,7 @@
 
     <header class="navbar">
         <div class="logo">
-            <a href="index.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #004d34; font-weight: 700; font-size: 1.2rem;">
-                <img src="logo.png" alt="Logo" style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%;"> 
-                Swap&go
-            </a>
+            <span style="color: #004d34;"><i class="fa-solid fa-graduation-cap"></i> Swap&go</span>
         </div>
         <ul class="nav-links">
             <li><a href="index.html">หน้าแรก</a></li>
@@ -169,11 +166,9 @@
         <div class="footer-contact-container">
             <div class="footer-contact-left">
                 <div class="logo">
-                    <a href="index.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #004d34; font-weight: 700; font-size: 1.1rem;">
-                        <img src="logo.png" alt="Logo" style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%;"> 
-                        Swap&go
-                    </a>
-                </div>
+            <a href="index.html"></a>
+            <img src="logo.png"> Swap&go
+        </div>
                 <h3 class="footer-contact-title">ติดต่อเรา</h3>
                 <p class="footer-contact-desc">มีข้อสงสัย หรือต้องการสอบถามข้อมูลเพิ่มเติม สามารถติดต่อเราได้ผ่านช่องทางด้านล่างนี้</p>
                 <ul class="footer-contact-info">
@@ -217,6 +212,7 @@
         }
 
         function loadCartItems() {
+            // 1. บันทึกสถานะ Checkbox เดิมไว้ก่อนรีเฟรชหน้าจอ
             const oldCheckboxes = document.querySelectorAll('.item-check');
             let checkedStates = [];
             oldCheckboxes.forEach(chk => {
@@ -235,6 +231,7 @@
                 listContainer.innerHTML = `<p style="text-align:center; color:#666; padding: 20px;">ไม่มีสินค้าในตะกร้า</p>`;
             } else {
                 cart.forEach((item, index) => {
+                    // 2. ดึงสถานะเดิมมาใส่ ถ้าเคยติ๊กไว้ ให้ใส่ checked กลับเข้าไป
                     let isChecked = checkedStates[index] ? 'checked' : '';
 
                     htmlContent += `
