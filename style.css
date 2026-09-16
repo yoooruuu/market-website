@@ -5352,3 +5352,49 @@ textarea {
         padding: 4px 10px !important;
     }
 }
+/* --- ตั้งค่า Navbar พื้นฐานสำหรับคอมพิวเตอร์ --- */
+.navbar {
+    background: #fff;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* --- การจัดการหน้าจอโทรศัพท์มือถือ (Responsive) --- */
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+        padding: 10px 15px;
+        flex-wrap: wrap; /* อนุญาตให้ขึ้นบรรทัดใหม่ได้ถ้าพื้นที่ไม่พอ */
+        gap: 8px;
+    }
+
+    /* 1. โลโก้อยู่ซ้ายสุด */
+    .navbar .logo {
+        flex: 1;
+    }
+
+    /* 2. ซ่อนเมนูลิงก์ตัวหนังสือ (หน้าแรก, สินค้าทั้งหมด, หมวดหมู่) บนมือถือ */
+    .nav-links {
+        display: none !important;
+    }
+
+    /* 3. ปุ่มเข้าสู่ระบบอยู่ขวาสุดเสมอ */
+    .auth-buttons {
+        order: 2;
+    }
+
+    /* 4. ช่องค้นหาให้ตกลงมาอยู่แถวที่ 2 เต็มความกว้างหน้าจอ จะได้ไม่ไปทับใคร */
+    .nav-search {
+        order: 3;
+        width: 100% !important;
+        margin-top: 5px;
+    }
+}
