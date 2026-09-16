@@ -5303,3 +5303,41 @@ textarea {
     background: #004d34;
     color: #ffffff;
 }
+/* --- สไตล์ปุ่มเข้าสู่ระบบแบบปกติ (รองรับมือถือ) --- */
+.btn-login-custom {
+    background: #ffffff;
+    color: #004d34;
+    border: 2px solid #004d34;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-block;
+    transition: all 0.2s ease;
+    white-space: nowrap; /* บังคับให้อยู่บรรทัดเดียวกันเสมอ ไม่ตัดคำ */
+}
+
+.btn-login-custom:hover,
+.btn-login-custom:active {
+    background: #004d34;
+    color: #ffffff;
+}
+
+/* --- การปรับแต่ง Navbar และหน้าจอเมื่อเปิดบนมือถือ (Media Query) --- */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 15px; /* ลดระยะขอบซ้าย-ขวาของ Navbar ให้กว้างขึ้น */
+    }
+
+    /* ซ่อนช่องค้นหาชั่วคราวบนมือถือ เพื่อป้องกันไม่ให้ไปเบียดปุ่มเข้าสู่ระบบ */
+    .nav-search {
+        display: none; 
+    }
+
+    /* ปรับขนาดปุ่มเข้าสู่ระบบให้พอดีกับหน้าจอมือถือ */
+    .btn-login-custom {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+    }
+}
