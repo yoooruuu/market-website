@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>หมวดหมู่สินค้า - Swap&go</title>
-     <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/png" href="logo.png">
     <!-- Google Fonts: Kanit -->
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-  
+ 
     <style>
         * {
             box-sizing: border-box;
@@ -241,15 +241,17 @@
         </ul>
         <hr class="sidebar-divider">
         <ul class="sidebar-menu">
-            <li><a href="index-regis.html" style="color: #dc3545;"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
+            <li><a href="index-regis.html" style="color: #dc3545;" onclick="localStorage.removeItem('userAccountSettings');"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
         </ul>
     </aside>
 
     <!-- Navbar ด้านบน -->
     <header class="navbar">
         <div class="logo">
-            <a href="index.html"></a>
-            <img src="logo.png"> Swap&go
+            <a href="index.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #004d34; font-weight: 700; font-size: 1.2rem;">
+                <img src="logo.png" alt="Logo" style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%;"> 
+                Swap&go
+            </a>
         </div>
         <ul class="nav-links">
             <li><a href="index.html">หน้าแรก</a></li>
@@ -361,7 +363,10 @@
         <div class="footer-contact-container">
             <div class="footer-contact-left">
                 <div class="footer-logo">
-                    <i class="fa-solid fa-graduation-cap"></i> Swap&go
+                    <a href="index-regis.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #004d34; font-weight: 700; font-size: 1.1rem;">
+                        <img src="logo.png" alt="Logo" style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%;"> 
+                        Swap&go
+                    </a>
                 </div>
                 <h3 class="footer-contact-title">ติดต่อเรา</h3>
                 <p class="footer-contact-desc">มีข้อสงสัย หรือต้องการสอบถามข้อมูลเพิ่มเติม สามารถติดต่อเราได้ผ่านช่องทางด้านล่างนี้</p>
