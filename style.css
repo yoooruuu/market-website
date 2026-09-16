@@ -5340,4 +5340,15 @@ textarea {
         padding: 5px 12px;
         font-size: 0.8rem;
     }
+}@media (max-width: 768px) {
+    /* ซ่อนลิงก์เมนูเดิมบนมือถือ เพื่อไม่ให้ชนกัน (เพราะในมือถือมักจะมีเมนูอื่นหรือปุ่มจัดการแล้ว) */
+    .nav-links {
+        display: none !important;
+    }
+    
+    /* ปรับช่องค้นหาให้เล็กลงพอดีตาบนมือถือ */
+    .nav-search {
+        width: 130px !important;
+        padding: 4px 10px !important;
+    }
 }
