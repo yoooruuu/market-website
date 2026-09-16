@@ -5419,3 +5419,42 @@ textarea {
         font-size: 0.8rem;
     }
 }
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+        padding: 8px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+    }
+
+    /* ซ่อนเมนูตัวหนังสือปกติบนมือถือ */
+    .nav-links {
+        display: none !important;
+    }
+
+    /* ย่อช่องค้นหาให้เล็กลงเหลือประมาณ 65px - 75px เพื่อให้มีพื้นที่เหลือและไม่ไปทับข้อความ */
+    .nav-search {
+        display: flex !important;
+        width: 70px !important; 
+        padding: 3px 6px !important;
+        margin: 0 !important;
+        order: 2;
+    }
+
+    .nav-search input {
+        font-size: 0.7rem !important;
+    }
+
+    /* จัดกลุ่มปุ่มขวา (เช่น ปุ่มเข้าสู่ระบบ) ให้อยู่ชิดขวาพอดี */
+    .auth-buttons, .nav-right-icons {
+        order: 3;
+        gap: 6px;
+    }
+
+    .btn-login-custom, .btn-login, .btn-register {
+        padding: 4px 10px !important;
+        font-size: 0.75rem !important;
+    }
+}
