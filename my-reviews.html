@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>รีวิวของฉัน - Swap&go</title>
-    <!-- Google Fonts: Kanit -->
+
       <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
    
@@ -24,7 +24,6 @@
             color: #333;
         }
 
-        /* --- Navbar Styles --- */
         .navbar {
             background: #fff;
             height: 60px;
@@ -111,7 +110,7 @@
             border-radius: 50%;
         }
 
-        /* --- Navbar Profile Icon & Image Style --- */
+     
         .nav-profile-link {
             color: inherit;
             text-decoration: none;
@@ -228,14 +227,12 @@
             border-top: 1px solid #eee;
         }
 
-        /* --- Main Container --- */
         .main-container {
             max-width: 900px;
             margin: 30px auto;
             padding: 0 20px;
         }
 
-        /* --- Review Tabs --- */
         .review-tabs {
             display: flex;
             gap: 40px;
@@ -350,7 +347,6 @@
             font-size: 0.95rem;
         }
 
-        /* --- Tab Content Toggle --- */
         .tab-content {
             display: none;
         }
@@ -362,10 +358,8 @@
 </head>
 <body>
 
-    <!-- พื้นหลังมืดตอนเปิด Sidebar -->
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-    <!-- แถบ Sidebar ด้านซ้าย -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h3>เมนูจัดการ</h3>
@@ -388,7 +382,7 @@
         </ul>
     </aside>
 
-    <!-- Navbar แถบบนสุด -->
+
     <header class="navbar">
        <div class="logo">
             <a href="index.html"></a>
@@ -425,7 +419,6 @@
             <button class="review-tab-item" onclick="switchTab('written')">รีวิวที่ฉันเขียน</button>
         </div>
 
-        <!-- เนื้อหา: รีวิวที่ได้รับ (สำหรับคนขาย) -->
         <div id="tab-received" class="tab-content active">
             <div id="received-list">
                 <div class="review-card-box">
@@ -451,7 +444,7 @@
             </div>
         </div>
 
-        <!-- เนื้อหา: รีวิวที่ฉันเขียน -->
+    
         <div id="tab-written" class="tab-content">
             <div id="written-list">
                 <div class="review-card-box">
@@ -479,10 +472,10 @@
         </div>
     </main>
 
-    <!-- JavaScript สำหรับควบคุมระบบหน้าเว็บ -->
+   
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // โหลดรูปโปรไฟล์มาแสดงที่ Navbar อัตโนมัติ (รองรับทั้งอัปโหลดและ Google Login)
+         
             const savedData = JSON.parse(localStorage.getItem('userAccountSettings')) || {};
             const navProfileContainer = document.getElementById('nav-profile-container');
 
@@ -495,7 +488,6 @@
             }
         });
 
-        // ควบคุม Sidebar
         const menuToggle = document.getElementById('menu-toggle');
         const closeBtn = document.getElementById('close-btn');
         const sidebar = document.getElementById('sidebar');
@@ -516,7 +508,6 @@
             }
         }
 
-        // ฟังก์ชันสลับแท็บรีวิว
         function switchTab(tabName) {
             const tabs = document.querySelectorAll('.review-tab-item');
             const contents = document.querySelectorAll('.tab-content');
@@ -533,7 +524,6 @@
             }
         }
 
-        // ฟังก์ชันลบการ์ดรีวิวออก
         function deleteReview(element, type) {
             if (confirm('คุณต้องการลบรีวิวนี้ใช่หรือไม่?')) {
                 const cardBox = element.closest('.review-card-box');
@@ -541,7 +531,6 @@
                 
                 cardBox.remove();
 
-                // ถ้าลบหมดแล้ว ให้แสดงข้อความว่าไม่มีรายการรีวิว
                 if (listContainer.children.length === 0) {
                     listContainer.innerHTML = `<div class="empty-message">ไม่มีรายการรีวิว</div>`;
                 }

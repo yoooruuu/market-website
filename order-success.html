@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="style.css">
   
   <style>
-    /* สไตล์สำหรับแถบ Sidebar และ Overlay */
+
     .sidebar-overlay {
         position: fixed;
         top: 0;
@@ -153,7 +153,7 @@
     <p class="success-subtitle">ระบบได้บันทึกคำสั่งซื้อของคุณแล้ว</p>
     
     <div class="success-card" id="success-items-container">
-      <!-- รายการสินค้าจะถูกแทรกผ่าน JavaScript -->
+
     </div>
 
     <div class="success-card">
@@ -191,7 +191,6 @@
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-contact-container">
         <div class="footer-contact-left">
@@ -224,7 +223,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. โหลดข้อมูลสินค้าในตะกร้าที่สั่งซื้อ
+    
       const savedCartItems = JSON.parse(localStorage.getItem('checkoutItems')) || [];
       const container = document.getElementById('success-items-container');
       
@@ -291,12 +290,10 @@
         }
       }
 
-      // 3. สร้างหมายเลขคำสั่งซื้อสุ่ม
       const randomId = '#RT' + Math.floor(100000000 + Math.random() * 900000000);
       const orderIdEl = document.getElementById('display-order-id');
       if (orderIdEl) orderIdEl.textContent = randomId;
 
-      // 4. ควบคุมการเปิด/ปิด Sidebar
       const menuToggle = document.getElementById('menu-toggle');
       const closeBtn = document.getElementById('close-btn');
       const sidebar = document.getElementById('sidebar');

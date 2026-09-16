@@ -236,10 +236,10 @@
 </head>
 <body>
 
-    <!-- พื้นหลังมืดตอนเปิด Sidebar -->
+
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-    <!-- แถบ Sidebar ด้านซ้าย -->
+ 
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h3>เมนูจัดการ</h3>
@@ -262,7 +262,7 @@
         </ul>
     </aside>
 
-    <!-- Navbar หลัก -->
+  
     <header class="navbar">
        <div class="logo">
             <a href="index.html"></a>
@@ -299,13 +299,13 @@
         <a href="category.html">หมวดหมู่</a> &gt; <a href="catalog.html" id="breadcrumb-category">สินค้า</a> &gt; <span id="breadcrumb-name">รายละเอียดสินค้า</span>
     </div>
 
-    <!-- ส่วนเนื้อหาหลัก -->
+   
     <main class="product-detail-container">
         <div class="product-gallery">
             <div class="main-product-img">
                 <img id="product-img" src="" alt="รูปสินค้า">
             </div>
-            <!-- ส่วนรูปภาพย่อย (Thumbnail List) จะถูกเติมข้อมูลจริงโดย JavaScript -->
+        
             <div class="thumbnail-list" id="thumbnail-list"></div>
         </div>
         
@@ -353,7 +353,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-contact-container">
             <div class="footer-contact-left">
@@ -384,7 +383,6 @@
         </div>
     </footer>
 
-    <!-- JavaScript สำหรับควบคุมหน้าเว็บ -->
     <script>
        
        document.addEventListener('DOMContentLoaded', () => {
@@ -402,7 +400,7 @@
 
             updateCartBadge();
 
-            // 2. โหลดข้อมูลสินค้าจริงจาก localStorage ตาม ID ใน URL
+          
             const urlParams = new URLSearchParams(window.location.search);
             const productId = urlParams.get('id');
 
@@ -433,7 +431,7 @@
             document.getElementById('product-desc').textContent = product.description;
             document.getElementById('breadcrumb-name').textContent = product.name;
 
-            // จัดการรูปภาพหลักและรูปภาพย่อย (Thumbnail)
+          
             const mainImg = document.getElementById('product-img');
             const thumbList = document.getElementById('thumbnail-list');
             
@@ -455,7 +453,6 @@
                 thumbList.appendChild(thumbItem);
             });
 
-            // ระบบตะกร้าสินค้าและการสั่งซื้อ
             const addCartBtn = document.getElementById('btn-add-cart');
             const buyNowBtn = document.getElementById('btn-buy-now');
 
@@ -496,7 +493,7 @@
             }
         });
 
-        // ควบคุม Sidebar
+
         const menuToggle = document.getElementById('menu-toggle');
         const closeBtn = document.getElementById('close-btn');
         const sidebar = document.getElementById('sidebar');

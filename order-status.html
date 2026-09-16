@@ -214,7 +214,6 @@
         border-top: 1px solid #eee;
     }
 
-    /* --- Status Page Layout --- */
     .status-container {
         max-width: 1000px;
         margin: 30px auto;
@@ -335,7 +334,6 @@
       </ul>
   </aside>
 
-  <!-- Navbar หลัก -->
   <header class="navbar">
    <div class="logo">
             <a href="index.html"></a>
@@ -509,10 +507,10 @@
    </div>
   </footer>
 
-  <!-- JavaScript สำหรับควบคุมหน้าเว็บ -->
+ 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. โหลดรูปโปรไฟล์มาแสดงที่ Navbar อัตโนมัติ (รองรับทั้งอัปโหลดและ Google Login)
+      
       const savedData = JSON.parse(localStorage.getItem('userAccountSettings')) || {};
       const navProfileContainer = document.getElementById('nav-profile-container');
 
@@ -524,7 +522,6 @@
           }
       }
 
-      // 2. โหลดข้อมูลสินค้าในตะกร้าหน้าสถานะ
       const savedItems = JSON.parse(localStorage.getItem('checkoutItems')) || [];
       const container = document.getElementById('status-items-container');
 

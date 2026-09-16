@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>หมวดหมู่สินค้า - Swap&go</title>
     <link rel="icon" type="image/png" href="logo.png">
-    <!-- Google Fonts: Kanit -->
+  
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="sidebar.css">
@@ -25,7 +25,7 @@
             color: #333;
         }
 
-        /* --- Navbar Styles --- */
+    
         .navbar {
             background: #fff;
             height: 60px;
@@ -100,7 +100,7 @@
             cursor: pointer;
         }
 
-        /* --- Navbar Profile Icon & Image Style --- */
+   
         .nav-profile-link {
             color: inherit;
             text-decoration: none;
@@ -126,7 +126,6 @@
             object-fit: cover;
         }
 
-        /* --- Sidebar Styles --- */
         .sidebar-overlay {
             position: fixed;
             top: 0;
@@ -225,7 +224,7 @@
             border-radius: 8px;
         }
 
-        /* --- Responsive สำหรับหน้าจอโทรศัพท์ --- */
+  
         @media (max-width: 768px) {
             .navbar {
                 height: auto;
@@ -253,10 +252,10 @@
 </head>
 <body>
 
-    <!-- พื้นหลังมืดตอนเปิด Sidebar -->
+   
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-    <!-- แถบ Sidebar ด้านซ้าย -->
+
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h3>เมนูจัดการ</h3>
@@ -306,12 +305,12 @@
                 </div>
             </a>
 
-            <!-- ปุ่ม 3 ขีดสำหรับเปิด Sidebar -->
+      
             <i class="fa-solid fa-bars" id="menu-toggle" style="cursor: pointer;" title="เปิด/ปิดเมนู"></i>
         </div>
     </header>
 
-    <!-- หัวข้อหน้าหมวดหมู่ -->
+
     <div class="category-page-header">
         <h1 class="category-page-title">หมวดหมู่สินค้าทั้งหมด</h1>
         <p class="category-page-subtitle">เลือกหมวดหมู่สินค้ามือสองสำหรับนักศึกษาที่คุณต้องการค้นหา</p>
@@ -425,10 +424,10 @@
         </div>
     </footer>
 
-    <!-- JavaScript สำหรับควบคุม Sidebar, การโหลดรูปโปรไฟล์ และนับจำนวนสินค้า -->
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. โหลดรูปโปรไฟล์มาแสดงที่ Navbar อัตโนมัติ (รองรับทั้งอัปโหลดและ Google Login)
+
             const savedData = JSON.parse(localStorage.getItem('userAccountSettings')) || {};
             const navProfileContainer = document.getElementById('nav-profile-container');
 
@@ -440,11 +439,10 @@
                 }
             }
 
-            // 2. อัปเดตจำนวนสินค้าในแต่ละหมวดหมู่
+      
             updateCategoryCountsFromLocalStorage();
         });
 
-        // 3. จัดการเปิด/ปิด Sidebar
         const menuToggle = document.getElementById('menu-toggle');
         const sidebar = document.getElementById('sidebar');
         const sidebarOverlay = document.getElementById('sidebar-overlay');
@@ -468,7 +466,6 @@
             sidebarOverlay.classList.remove('active');
         }
 
-        // 4. ฟังก์ชันนับและแสดงจำนวนสินค้าในแต่ละหมวดหมู่จาก localStorage แบบอัจฉริยะ
         function updateCategoryCountsFromLocalStorage() {
             const products = JSON.parse(localStorage.getItem('allProducts')) || [];
             const counts = {

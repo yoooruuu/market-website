@@ -149,7 +149,6 @@
         <h1 class="cart-page-title">ตะกร้าสินค้า <span style="font-size: 1rem; color: #666; font-weight: normal;">(0 รายการ)</span></h1>
 
         <div class="cart-items-list">
-            <!-- รายการสินค้าจะถูกเรนเดอร์มาที่นี่แบบไดนามิก -->
         </div>
 
         <div class="cart-summary-box">
@@ -212,7 +211,7 @@
         }
 
         function loadCartItems() {
-            // 1. บันทึกสถานะ Checkbox เดิมไว้ก่อนรีเฟรชหน้าจอ
+      
             const oldCheckboxes = document.querySelectorAll('.item-check');
             let checkedStates = [];
             oldCheckboxes.forEach(chk => {
@@ -231,7 +230,7 @@
                 listContainer.innerHTML = `<p style="text-align:center; color:#666; padding: 20px;">ไม่มีสินค้าในตะกร้า</p>`;
             } else {
                 cart.forEach((item, index) => {
-                    // 2. ดึงสถานะเดิมมาใส่ ถ้าเคยติ๊กไว้ ให้ใส่ checked กลับเข้าไป
+              
                     let isChecked = checkedStates[index] ? 'checked' : '';
 
                     htmlContent += `

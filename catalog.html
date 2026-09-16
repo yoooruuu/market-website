@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ค้นหาสินค้า - Swap&go</title>
      <link rel="icon" type="image/png" href="logo.png">
-    <!-- Google Fonts: Kanit -->
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 
@@ -23,8 +21,6 @@
             background-color: #f8f9fa;
             color: #333;
         }
-
-        /* --- Navbar Styles --- */
         .navbar {
             background: #fff;
             height: 60px;
@@ -97,8 +93,6 @@
             text-decoration: none;
             position: relative;
         }
-
-        /* --- Navbar Profile Icon & Image Style --- */
         .nav-profile-link {
             display: flex;
             align-items: center;
@@ -122,8 +116,6 @@
             height: 100%;
             object-fit: cover;
         }
-
-        /* --- Sidebar Styles --- */
         .sidebar-overlay {
             position: fixed;
             top: 0;
@@ -213,7 +205,6 @@
             border-top: 1px solid #eee;
         }
 
-        /* --- Main Layout --- */
         .catalog-container {
             max-width: 1200px;
             margin: 30px auto;
@@ -222,7 +213,6 @@
             gap: 30px;
         }
 
-        /* --- Filter Sidebar (Left) --- */
         .sidebar-filter {
             width: 260px;
             background: #fff;
@@ -295,7 +285,6 @@
             background: #003825;
         }
 
-        /* --- Catalog Content (Right) --- */
         .catalog-content {
             flex: 1;
         }
@@ -343,7 +332,7 @@
             background: #fff;
         }
 
-        /* --- Product Grid --- */
+
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -351,7 +340,6 @@
         }
     
 
-        /* ===== Responsive สำหรับหน้านี้ ===== */
         html, body {
             width: 100%;
             max-width: 100%;
@@ -661,10 +649,7 @@
 </head>
 <body>
 
-    <!-- พื้นหลังมืดตอนเปิด Sidebar -->
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
-
-    <!-- แถบ Sidebar ด้านซ้าย -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h3>เมนูจัดการ</h3>
@@ -687,7 +672,6 @@
         </ul>
     </aside>
 
-    <!-- Navbar ด้านบน -->
     <header class="navbar">
         <div class="logo">
            <div class="logo">
@@ -735,7 +719,6 @@
                 </ul>
             </div>
 
-            <!-- ช่วงราคา -->
             <div class="filter-group">
                 <h3 class="filter-title">ช่วงราคา</h3>
                 <div class="price-slider-wrapper">
@@ -746,8 +729,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- สภาพสินค้า -->
             <div class="filter-group">
                 <h3 class="filter-title">สภาพสินค้า</h3>
                 <ul class="checkbox-list">
@@ -756,11 +737,8 @@
                 </ul>
             </div>
 
-            <!-- ปุ่มค้นหา -->
             <button id="btn-search-filter">ค้นหา</button>
         </aside>
-
-        <!-- ส่วนแสดงรายการสินค้าด้านขวา -->
         <section class="catalog-content">
             <div class="catalog-header">
                 <div class="catalog-title-group">
@@ -777,14 +755,12 @@
                 </div>
             </div>
             
-            <!-- ตารางแสดงสินค้า -->
+
             <div class="product-grid" id="catalog-grid">
-                <!-- สินค้าจะถูกเรนเดอร์มาที่นี่ผ่าน JavaScript -->
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer" style="margin-top: 50px;">
         <div class="footer-contact-container">
             <div class="footer-contact-left">
@@ -815,9 +791,8 @@
         </div>
     </footer>
 
-    <!-- JavaScript สำหรับควบคุมระบบภายในหน้า -->
+    
     <script>
-        // 1. โหลดรูปโปรไฟล์มาแสดงที่ Navbar อัตโนมัติเมื่อเปิดหน้าเว็บ (รองรับทั้งอัปโหลดและ Google Login)
         document.addEventListener("DOMContentLoaded", () => {
             const savedData = JSON.parse(localStorage.getItem('userAccountSettings')) || {};
             const navProfileContainer = document.getElementById('nav-profile-container');
@@ -843,7 +818,7 @@
             }
         });
 
-        // 2. ควบคุม Sidebar สไลด์
+  
         const menuToggle = document.getElementById('menu-toggle');
         const closeBtn = document.getElementById('close-btn');
         const sidebar = document.getElementById('sidebar');
@@ -864,7 +839,7 @@
             sidebarOverlay.classList.remove('active');
         }
 
-        // 3. ควบคุมช่วงราคา Slider
+
         const priceSlider = document.getElementById('priceSlider');
         const maxPriceLabel = document.getElementById('maxPrice');
         if (priceSlider && maxPriceLabel) {
@@ -873,38 +848,36 @@
             });
         }
 
-        // 4. ฟังก์ชันกรองและแสดงผลสินค้า
+      
         function filterAndRenderProducts() {
             const catalogGrid = document.getElementById('catalog-grid');
             const itemCountLabel = document.getElementById('item-count');
             const maxPrice = Number(document.getElementById('priceSlider').value);
             const sortOption = document.getElementById('sort-select').value;
 
-            // ดึงหมวดหมู่ที่ถูกติ๊กเลือก
             const selectedCategories = Array.from(document.querySelectorAll('.cat-checkbox:checked'))
                 .map(cb => cb.value);
 
-            // ดึงสภาพสินค้าที่ถูกติ๊กเลือก
+       
             const selectedConditions = Array.from(document.querySelectorAll('.cond-checkbox:checked'))
                 .map(cb => cb.value);
 
-            // ดึงข้อมูลสินค้าจริงทั้งหมดจาก localStorage
             let allProducts = JSON.parse(localStorage.getItem('allProducts')) || [];
 
-            // กรองตามหมวดหมู่
+      
             let filtered = selectedCategories.length === 0 
                 ? allProducts 
                 : allProducts.filter(p => selectedCategories.includes(p.category));
 
-            // กรองตามสภาพสินค้า
+  
             if (selectedConditions.length > 0) {
                 filtered = filtered.filter(p => selectedConditions.includes(p.condition));
             }
 
-            // กรองตามช่วงราคา
+
             filtered = filtered.filter(p => Number(p.price) <= maxPrice);
 
-            // จัดเรียงสินค้า
+
             if (sortOption === 'price-low') {
                 filtered.sort((a, b) => Number(a.price) - Number(b.price));
             } else if (sortOption === 'price-high') {
@@ -913,12 +886,11 @@
                 filtered.sort((a, b) => b.id - a.id);
             }
 
-            // อัปเดตตัวเลขจำนวนสินค้า
             if (itemCountLabel) {
                 itemCountLabel.textContent = `(${filtered.length} รายการ)`;
             }
 
-            // แสดงผลลัพธ์ลงใน Grid
+       
             if (filtered.length === 0) {
                 catalogGrid.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 50px; color: #64748b;">

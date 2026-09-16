@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <!-- ฝั่งขวา: ข้อมูลสินค้า -->
+  
         <div class="product-info-section">
             <h1 class="product-main-title">หนังสือเรียนคอมพิวเตอร์กราฟิก มือสองสภาพดี</h1>
             <div class="product-main-price">฿250</div>
@@ -72,7 +72,6 @@
             </div>
         </div>
 
-        <!-- กล่องแจ้งเตือน: เข้าสู่ระบบเพื่อติดต่อผู้ขาย -->
         <div class="auth-guard-box">
             <i class="fa-solid fa-lock guard-icon"></i>
             <h2 class="guard-title">เข้าสู่ระบบเพื่อติดต่อผู้ขาย</h2>
@@ -83,27 +82,25 @@
         </div>
 
     </main>
-    <!-- JavaScript สำหรับคลิกเปลี่ยนรูปภาพหลัก -->
+ 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-    // สมมติว่าระบบของคุณเช็กการเข้าสู่ระบบจากตัวแปรนี้ (ปรับให้ตรงกับคีย์ที่ใช้จริง เช่น 'isLoggedIn' หรือ 'userAccountSettings')
+    
     const isLogined = localStorage.getItem('isLoggedIn') === 'true' || localStorage.getItem('currentUser') !== null;
 
-    // หาตำแหน่งของปุ่มเดิมในหน้า product-buy.html (เช่น กล่องปุ่มซื้อเดิม)
-    // สมมติว่าปุ่มเดิมอยู่ใน container หรือใช้ class/id ของปุ่มเดิมที่คุณมี
+ 
     const actionButtonContainer = document.querySelector('.product-actions') || document.querySelector('.action-buttons') || document.getElementById('action-container');
 
     if (actionButtonContainer) {
         if (!isLogined) {
-            // ถ้ายังไม่เข้าสู่ระบบ: เปลี่ยนเป็นปุ่ม "เข้าสู่ระบบ"
+        
             actionButtonContainer.innerHTML = `
                 <a href="login.html" class="btn-login-required" style="display: block; width: 100%; background: #004d34; color: #fff; text-align: center; padding: 12px; border-radius: 8px; text-decoration: none; font-size: 1rem; font-weight: 500;">
                     <i class="fa-solid fa-right-to-bracket"></i> เข้าสู่ระบบเพื่อซื้อสินค้า
                 </a>
             `;
         } else {
-            // ถ้าเข้าสู่ระบบแล้ว: คงปุ่ม "เพิ่มลงตะกร้า" และ "สั่งซื้อสินค้า" ไว้ตามเดิม
-            // (หากคุณมีโค้ดปุ่มเดิมอยู่แล้วใน HTML สามารถปล่อยไว้ หรือเรนเดอร์ผ่านตรงนี้ได้ครับ)
+          
         }
     }
 });
@@ -112,12 +109,12 @@
 
         thumbnails.forEach(thumb => {
             thumb.addEventListener('click', function() {
-                // เอาคลาส active ออกจากทุกรูปย่อย
+             
                 thumbnails.forEach(t => t.classList.remove('active'));
-                // ใส่คลาส active ให้รูปที่ถูกคลิก
+               
                 this.classList.add('active');
                 
-                // เปลี่ยน src รูปภาพหลักเป็นรูปที่คลิก
+             
                 const clickedImgSrc = this.querySelector('img').src;
                 mainImage.src = clickedImgSrc;
             });

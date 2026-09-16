@@ -103,8 +103,6 @@
             background: #004d34;
             color: #ffffff;
         }
-
-        /* --- ปรับขนาดรูป Footer ให้ไม่ล้นกรอบ --- */
         .footer-contact-right img {
             width: 100%;
             max-height: 220px;
@@ -140,8 +138,6 @@
         <h1 class="category-page-title">หมวดหมู่สินค้าทั้งหมด</h1>
         <p class="category-page-subtitle">เลือกหมวดหมู่สินค้ามือสองสำหรับนักศึกษาที่คุณต้องการค้นหา</p>
     </div>
-
-    <!-- ส่วนรายการกล่องหมวดหมู่ (ลิงก์ไปยัง catalog-regis.html พร้อมส่งค่า category) -->
     <main class="category-page-container">
         <div class="category-page-grid">
             <a href="catalog-regis.html?category=หนังสือ" class="category-box-card" data-category="หนังสือ">
@@ -241,8 +237,6 @@
             <p>&copy; 2026 Swap&go. All rights reserved. RMUTTO Student Marketplace.</p>
         </div>
     </footer>
-
-    <!-- Script นับจำนวนสินค้าจาก localStorage แบบอัจฉริยะ -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const products = JSON.parse(localStorage.getItem('allProducts')) || [];

@@ -5458,3 +5458,7 @@ textarea {
         font-size: 0.75rem !important;
     }
 }
+/* ซ่อนช่องค้นหาเฉพาะหน้าสมัครสมาชิก (Register) เท่านั้น */
+body.register-body .nav-search {
+    display: none !important;
+}
