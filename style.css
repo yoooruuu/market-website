@@ -5125,7 +5125,63 @@ textarea {
     color: #555;
 }
 .logo img {
-    width: 50px;
+    width: 150px;
     height: auto;
     display: block;
 }
+/* --- แก้ไขบังคับการแสดงผลบนมือถือไม่ให้เละ --- */
+@media screen and (max-width: 768px) {
+    /* บังคับทุกกล่องคอนเทนต์ให้กว้างเต็มจอและมีขอบเว้นพอดี */
+    .container, 
+    .catalog-container, 
+    .category-page-container, 
+    .product-detail-container, 
+    .cart-container, 
+    .checkout-container, 
+    .success-container, 
+    .status-container, 
+    .main-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* บังคับกริดสินค้าให้แสดงผล 2 คอลัมน์พอดีบนมือถือ */
+    .product-grid, 
+    .products-grid, 
+    .catalog-grid, 
+    .index-grid, 
+    .sub-product-grid, 
+    .category-page-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    /* บังคับการ์ดสินค้าและความกว้างรูปภาพไม่ให้ทะลุกอบ */
+    .product-card, 
+    .catalog-card, 
+    .sub-product-card {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .product-img, 
+    .catalog-img-container img, 
+    .sub-product-img img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 1 / 1 !important;
+        object-fit: cover !important;
+    }
+
+    /* ป้องกันข้อความล้นจอ */
+    h1, h2, h3, h4, p, span {
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
+    }
+  }
