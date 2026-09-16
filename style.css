@@ -5185,4 +5185,101 @@ textarea {
         word-break: break-word !important;
     }
   }
-  
+  /* --- ปรับปรุงดีไซน์หน้า Login ให้สวยงามและรองรับมือถือ --- */
+.auth-body, .login-body {
+    background: linear-gradient(135deg, #f0fdf4 0%, #f8fafc 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* จัดกล่องหลักให้เป็น Grid / Flex ที่ยืดหยุ่น */
+.auth-wrapper, .login-container {
+    width: 100%;
+    max-width: 850px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 77, 52, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* ฝั่งรูปภาพหรือการต้อนรับด้านซ้าย */
+.auth-left-banner, .login-left {
+    flex: 1;
+    background: url('images/rmutto.jpg') center/cover no-repeat;
+    position: relative;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 250px;
+}
+
+.auth-left-banner::after, .login-left::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 77, 52, 0.85), rgba(0, 0, 0, 0.2));
+}
+
+.auth-left-content, .login-left-card {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+}
+
+.auth-left-content h2, .login-left-card h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.auth-left-content p, .login-left-card p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ฝั่งฟอร์มกรอกข้อมูลด้านขวา */
+.auth-right-form, .login-right {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #ffffff;
+}
+
+/* Responsive สำหรับหน้าจอแท็บเล็ตและมือถือ (ต่ำกว่า 768px) */
+@media screen and (max-width: 768px) {
+    .auth-wrapper, .login-container {
+        flex-direction: column !important;
+        max-width: 450px !important;
+        margin: 10px auto !important;
+    }
+
+    .auth-left-banner, .login-left {
+        padding: 25px 20px !important;
+        min-height: 160px !important;
+    }
+
+    .auth-left-content h2, .login-left-card h2 {
+        font-size: 1.2rem !important;
+    }
+
+    .auth-left-content p, .login-left-card p {
+        font-size: 0.8rem !important;
+    }
+
+    .auth-right-form, .login-right {
+        padding: 25px 20px !important;
+    }
+}
