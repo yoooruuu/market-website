@@ -5129,9 +5129,9 @@ textarea {
     height: auto;
     display: block;
 }
-/* --- แก้ไขบังคับการแสดงผลบนมือถือไม่ให้เละ --- */
+
 @media screen and (max-width: 768px) {
-    /* บังคับทุกกล่องคอนเทนต์ให้กว้างเต็มจอและมีขอบเว้นพอดี */
+    
     .container, 
     .catalog-container, 
     .category-page-container, 
@@ -5179,13 +5179,13 @@ textarea {
         object-fit: cover !important;
     }
 
-    /* ป้องกันข้อความล้นจอ */
+   
     h1, h2, h3, h4, p, span {
         overflow-wrap: break-word !important;
         word-break: break-word !important;
     }
   }
-  /* --- ปรับปรุงดีไซน์หน้า Login ให้สวยงามและรองรับมือถือ --- */
+  
 .auth-body, .login-body {
     background: linear-gradient(135deg, #f0fdf4 0%, #f8fafc 100%);
     min-height: 100vh;
@@ -5196,7 +5196,6 @@ textarea {
     box-sizing: border-box;
 }
 
-/* จัดกล่องหลักให้เป็น Grid / Flex ที่ยืดหยุ่น */
 .auth-wrapper, .login-container {
     width: 100%;
     max-width: 850px;
@@ -5297,13 +5296,13 @@ textarea {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-/* เมื่อเอาเมาส์ชี้ (Hover) หรือกดคลิก (Active) จะเปลี่ยนเป็นสีเขียวทึบ */
+
 .btn-login-custom:hover,
 .btn-login-custom:active {
     background: #004d34;
     color: #ffffff;
 }
-/* --- สไตล์ปุ่มเข้าสู่ระบบแบบปกติ (รองรับมือถือ) --- */
+
 .btn-login-custom {
     background: #ffffff;
     color: #004d34;
@@ -5324,35 +5323,30 @@ textarea {
     color: #ffffff;
 }
 
-/* --- การปรับแต่ง Navbar และหน้าจอเมื่อเปิดบนมือถือ (Media Query) --- */
 @media (max-width: 768px) {
     .navbar {
-        padding: 0 15px; /* ลดระยะขอบซ้าย-ขวาของ Navbar ให้กว้างขึ้น */
+        padding: 0 15px;
     }
 
-    /* ซ่อนช่องค้นหาชั่วคราวบนมือถือ เพื่อป้องกันไม่ให้ไปเบียดปุ่มเข้าสู่ระบบ */
     .nav-search {
         display: none; 
     }
 
-    /* ปรับขนาดปุ่มเข้าสู่ระบบให้พอดีกับหน้าจอมือถือ */
     .btn-login-custom {
         padding: 5px 12px;
         font-size: 0.8rem;
     }
 }@media (max-width: 768px) {
-    /* ซ่อนลิงก์เมนูเดิมบนมือถือ เพื่อไม่ให้ชนกัน (เพราะในมือถือมักจะมีเมนูอื่นหรือปุ่มจัดการแล้ว) */
+  
     .nav-links {
         display: none !important;
     }
-    
-    /* ปรับช่องค้นหาให้เล็กลงพอดีตาบนมือถือ */
+ 
     .nav-search {
         width: 130px !important;
         padding: 4px 10px !important;
     }
 }
-/* --- ตั้งค่า Navbar พื้นฐานสำหรับคอมพิวเตอร์ --- */
 .navbar {
     background: #fff;
     height: 60px;
@@ -5372,21 +5366,19 @@ textarea {
     .navbar {
         height: auto;
         padding: 10px 15px;
-        flex-wrap: wrap; /* อนุญาตให้ขึ้นบรรทัดใหม่ได้ถ้าพื้นที่ไม่พอ */
+        flex-wrap: wrap; 
         gap: 8px;
     }
 
-    /* 1. โลโก้อยู่ซ้ายสุด */
     .navbar .logo {
         flex: 1;
     }
 
-    /* 2. ซ่อนเมนูลิงก์ตัวหนังสือ (หน้าแรก, สินค้าทั้งหมด, หมวดหมู่) บนมือถือ */
+   
     .nav-links {
         display: none !important;
     }
 
-    /* 3. ปุ่มเข้าสู่ระบบอยู่ขวาสุดเสมอ */
     .auth-buttons {
         order: 2;
     }
@@ -5398,19 +5390,19 @@ textarea {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        flex-wrap: nowrap; /* ป้องกันไม่ให้ขึ้นบรรทัดใหม่มั่วซั่ว */
+        flex-wrap: nowrap; 
         gap: 8px;
     }
 
-    /* ซ่อนลิงก์เมนูตัวหนังสือเดิม */
+
     .nav-links {
         display: none !important;
     }
 
-    /* ปรับช่องค้นหาให้มีขนาดกะทัดรัด อยู่ในแถวเดียวกับด้านบนได้ */
+   
     .nav-search {
         display: flex !important;
-        width: 90px !important; /* ย่อความกว้างลงให้พอดีกับพื้นที่ที่เหลือ */
+        width: 90px !important; 
         padding: 4px 10px !important;
         margin-top: 0 !important;
     }
@@ -5429,12 +5421,10 @@ textarea {
         gap: 6px;
     }
 
-    /* ซ่อนเมนูตัวหนังสือปกติบนมือถือ */
     .nav-links {
         display: none !important;
     }
 
-    /* ย่อช่องค้นหาให้เล็กลงเหลือประมาณ 65px - 75px เพื่อให้มีพื้นที่เหลือและไม่ไปทับข้อความ */
     .nav-search {
         display: flex !important;
         width: 70px !important; 
@@ -5447,7 +5437,7 @@ textarea {
         font-size: 0.7rem !important;
     }
 
-    /* จัดกลุ่มปุ่มขวา (เช่น ปุ่มเข้าสู่ระบบ) ให้อยู่ชิดขวาพอดี */
+  
     .auth-buttons, .nav-right-icons {
         order: 3;
         gap: 6px;
@@ -5458,7 +5448,7 @@ textarea {
         font-size: 0.75rem !important;
     }
 }
-/* ซ่อนช่องค้นหาเฉพาะหน้าสมัครสมาชิก (Register) เท่านั้น */
+
 body.register-body .nav-search {
     display: none !important;
 }
