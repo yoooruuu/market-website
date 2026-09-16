@@ -5283,3 +5283,42 @@ textarea {
         padding: 25px 20px !important;
     }
 }
+/* --- แก้ไข Navbar บนมือถือไม่ให้ล้นและเบียดกัน --- */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 0 12px !important;
+        justify-content: space-between !important;
+        height: 60px !important;
+    }
+
+    /* ซ่อนลิงก์ข้อความเมนูด้านบนบนมือถือทั้งหมด ให้ไปกดเปิดดูใน Sidebar แทน */
+    .navbar .nav-links {
+        display: none !important;
+    }
+
+    /* ซ่อนช่องค้นหาใน Navbar บนมือถือ เพื่อไม่ให้กินพื้นที่ */
+    .navbar .nav-search {
+        display: none !important;
+    }
+
+    /* จัดระยะห่างไอคอนด้านขวา (ตะกร้า, โปรไฟล์, เมนู 3 ขีด) ให้พอดีสวยงาม */
+    .navbar .nav-right-icons {
+        display: flex !important;
+        align-items: center !important;
+        gap: 15px !important;
+        font-size: 1.1rem !important;
+    }
+
+    /* ควบคุมขนาดรูปโลโก้และชื่อใน Navbar มือถือไม่ให้ใหญ่เกินไป */
+    .navbar .logo {
+        font-size: 1.1rem !important;
+        gap: 6px !important;
+    }
+
+    .navbar .logo img {
+        width: 35px !important;
+        height: 35px !important;
+        object-fit: cover !important;
+        border-radius: 50% !important;
+    }
+}
