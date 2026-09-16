@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-  
+ 
     <style>
         .sidebar-overlay {
             position: fixed;
@@ -136,59 +136,19 @@
                 <span class="cart-badge" id="cart-badge" style="position: absolute; top: -5px; right: -8px; background: #ff4757; color: white; font-size: 0.65rem; padding: 1px 5px; border-radius: 50%;">2</span>
             </a>
             <a href="profile.html" class="nav-profile-link">
-    <div class="nav-profile-circle" id="nav-profile-container">
-        <i class="fa-solid fa-user" id="nav-user-icon"></i>
-    </div>
-</a>
+                <div class="nav-profile-circle" id="nav-profile-container">
+                    <i class="fa-solid fa-user" id="nav-user-icon"></i>
+                </div>
+            </a>
             <i class="fa-solid fa-bars" id="menu-toggle" title="เปิด/ปิดเมนู" style="cursor: pointer;"></i>
         </div>
     </header>
 
     <main class="cart-container">
-        <h1 class="cart-page-title">ตะกร้าสินค้า <span style="font-size: 1rem; color: #666; font-weight: normal;">(2 รายการ)</span></h1>
+        <h1 class="cart-page-title">ตะกร้าสินค้า <span style="font-size: 1rem; color: #666; font-weight: normal;">(0 รายการ)</span></h1>
 
         <div class="cart-items-list">
-            <div class="cart-item-card" data-price="250">
-                <div class="cart-item-left">
-                    <input type="checkbox" class="cart-checkbox item-check">
-                    <div class="cart-item-img">
-                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=300" alt="หนังสือชีววิทยา">
-                    </div>
-                    <div class="cart-item-details">
-                        <h3 class="cart-item-title">หนังสือชีววิทยา</h3>
-                        <div class="cart-item-price">฿250</div>
-                    </div>
-                </div>
-                <div class="cart-item-right">
-                    <div class="quantity-control">
-                        <button class="qty-btn minus-btn">-</button>
-                        <input type="text" class="qty-input" value="1" readonly>
-                        <button class="qty-btn plus-btn">+</button>
-                    </div>
-                    <button class="remove-item-btn"><i class="fa-regular fa-trash-can"></i></button>
-                </div>
-            </div>
-            
-            <div class="cart-item-card" data-price="250">
-                <div class="cart-item-left">
-                    <input type="checkbox" class="cart-checkbox item-check">
-                    <div class="cart-item-img">
-                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=300" alt="หนังสือชีววิทยา">
-                    </div>
-                    <div class="cart-item-details">
-                        <h3 class="cart-item-title">หนังสือชีววิทยา</h3>
-                        <div class="cart-item-price">฿250</div>
-                    </div>
-                </div>
-                <div class="cart-item-right">
-                    <div class="quantity-control">
-                        <button class="qty-btn minus-btn">-</button>
-                        <input type="text" class="qty-input" value="1" readonly>
-                        <button class="qty-btn plus-btn">+</button>
-                    </div>
-                    <button class="remove-item-btn"><i class="fa-regular fa-trash-can"></i></button>
-                </div>
-            </div>
+            <!-- รายการสินค้าจะถูกเรนเดอร์มาที่นี่แบบไดนามิก -->
         </div>
 
         <div class="cart-summary-box">
@@ -203,20 +163,17 @@
 
     <footer class="site-footer">
         <div class="footer-contact-container">
-            
             <div class="footer-contact-left">
                 <div class="footer-logo">
                     <i class="fa-solid fa-graduation-cap"></i> Swap&go
                 </div>
                 <h3 class="footer-contact-title">ติดต่อเรา</h3>
                 <p class="footer-contact-desc">มีข้อสงสัย หรือต้องการสอบถามข้อมูลเพิ่มเติม สามารถติดต่อเราได้ผ่านช่องทางด้านล่างนี้</p>
-                
                 <ul class="footer-contact-info">
                     <li><i class="fa-solid fa-envelope"></i> contact.swapandgo@gmail.com</li>
                     <li><i class="fa-solid fa-location-dot"></i> มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ</li>
                 </ul>
-
-                 <div class="footer-social-icons">
+                <div class="footer-social-icons">
                     <a href="https://line.me/ti/p/edEMCFLm-k" class="footer-social-icon social-line"><i class="fa-brands fa-line"></i></a>
                     <a href="https://www.instagram.com/yoxurth?stkn=MTA5b3k5a3kzOGQ1NA==" class="footer-social-icon social-ig"><i class="fa-brands fa-instagram"></i></a>
                     <a href="https://www.facebook.com/share/1MLeNK6Gc1/?mibextid=wwXIfr" class="footer-social-icon social-fb"><i class="fa-brands fa-facebook-f"></i></a>
@@ -225,7 +182,6 @@
             <div class="footer-contact-right">
                 <img src="river.jpg" alt="RMUTTO Building">
             </div>
-
         </div>
         <div class="footer-bottom-bar">
             <p>&copy; 2026 Swap&go. All rights reserved. RMUTTO Student Marketplace.</p>
@@ -254,62 +210,79 @@
         }
 
         function loadCartItems() {
-            const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
-            if (cart.length === 0) return;
-
-            let subtotal = 0;
-            let totalItemsCount = 0;
-            let htmlContent = `<h2 class="cart-page-title" style="margin-bottom: 20px;">ตะกร้าสินค้า (<span id="item-count">0</span> รายการ)</h2><div class="cart-items-list">`;
-
-            cart.forEach((item, index) => {
-                const itemTotal = item.price * (item.quantity || 1);
-                subtotal += itemTotal;
-                totalItemsCount += (item.quantity || 1);
-
-                htmlContent += `
-                    <div class="cart-item-card" data-price="${item.price}" style="background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-                        <div class="cart-item-left" style="display: flex; align-items: center; gap: 15px;">
-                            <input type="checkbox" class="cart-checkbox item-check" data-index="${index}" style="width: 18px; height: 18px; accent-color: #004d34;">
-                            <div class="cart-item-img">
-                                <img src="${item.image}" alt="${item.name}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
-                            </div>
-                            <div class="cart-item-details">
-                                <h3 class="cart-item-title" style="font-size: 1rem; font-weight: 500; margin-bottom: 5px; color: #222;">${item.name}</h3>
-                                <div class="cart-item-price" style="font-size: 0.95rem; font-weight: 600; color: #004d34;">฿${item.price.toLocaleString()}</div>
-                            </div>
-                        </div>
-                        <div class="cart-item-right" style="display: flex; align-items: center; gap: 20px;">
-                            <div class="quantity-control" style="display: flex; align-items: center; border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden;">
-                                <button class="qty-btn minus-btn" onclick="updateQuantity(${index}, -1)" style="background: #f8f9fa; border: none; padding: 5px 12px; cursor: pointer; font-weight: bold;">-</button>
-                                <input type="text" class="qty-input" value="${item.quantity || 1}" readonly style="width: 35px; text-align: center; border: none; font-size: 0.95rem;">
-                                <button class="qty-btn plus-btn" onclick="updateQuantity(${index}, 1)" style="background: #f8f9fa; border: none; padding: 5px 12px; cursor: pointer; font-weight: bold;">+</button>
-                            </div>
-                            <button class="remove-item-btn" onclick="removeItem(${index})" style="background: none; border: none; color: #ff4757; font-size: 1.1rem; cursor: pointer;"><i class="fa-regular fa-trash-can"></i></button>
-                        </div>
-                    </div>
-                `;
+            // 1. บันทึกสถานะ Checkbox เดิมไว้ก่อนรีเฟรชหน้าจอ
+            const oldCheckboxes = document.querySelectorAll('.item-check');
+            let checkedStates = [];
+            oldCheckboxes.forEach(chk => {
+                checkedStates.push(chk.checked);
             });
 
-            htmlContent += `</div>`;
+            const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const listContainer = document.querySelector('.cart-items-list');
+            const pageTitle = document.querySelector('.cart-page-title');
+            
+            if (!listContainer) return;
 
-            const containerMain = document.querySelector('.cart-container');
-            if (containerMain) {
-                const listContainer = containerMain.querySelector('.cart-items-list');
-                const pageTitle = containerMain.querySelector('.cart-page-title');
-                
-                if (listContainer) {
-                    listContainer.outerHTML = htmlContent;
-                }
-                if (pageTitle) {
-                    pageTitle.innerHTML = `ตะกร้าสินค้า <span style="font-size: 1rem; color: #666; font-weight: normal;">(${totalItemsCount} รายการ)</span>`;
-                }
-                
-                const summaryCount = document.getElementById('summary-item-count');
-                const summaryPrice = document.getElementById('summary-total-price');
-                if (summaryCount) summaryCount.textContent = `ยอดรวมสินค้า (${totalItemsCount} รายการ)`;
-                if (summaryPrice) summaryPrice.textContent = `฿${subtotal.toLocaleString()}`;
+            let htmlContent = '';
+
+            if (cart.length === 0) {
+                listContainer.innerHTML = `<p style="text-align:center; color:#666; padding: 20px;">ไม่มีสินค้าในตะกร้า</p>`;
+            } else {
+                cart.forEach((item, index) => {
+                    // 2. ดึงสถานะเดิมมาใส่ ถ้าเคยติ๊กไว้ ให้ใส่ checked กลับเข้าไป
+                    let isChecked = checkedStates[index] ? 'checked' : '';
+
+                    htmlContent += `
+                        <div class="cart-item-card" data-price="${item.price}" style="background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                            <div class="cart-item-left" style="display: flex; align-items: center; gap: 15px;">
+                                <input type="checkbox" class="cart-checkbox item-check" data-index="${index}" ${isChecked} onchange="updateSummary()" style="width: 18px; height: 18px; accent-color: #004d34;">
+                                <div class="cart-item-img">
+                                    <img src="${item.image}" alt="${item.name}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
+                                </div>
+                                <div class="cart-item-details">
+                                    <h3 class="cart-item-title" style="font-size: 1rem; font-weight: 500; margin-bottom: 5px; color: #222;">${item.name}</h3>
+                                    <div class="cart-item-price" style="font-size: 0.95rem; font-weight: 600; color: #004d34;">฿${item.price.toLocaleString()}</div>
+                                </div>
+                            </div>
+                            <div class="cart-item-right" style="display: flex; align-items: center; gap: 20px;">
+                                <div class="quantity-control" style="display: flex; align-items: center; border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden;">
+                                    <button class="qty-btn minus-btn" onclick="updateQuantity(${index}, -1)" style="background: #f8f9fa; border: none; padding: 5px 12px; cursor: pointer; font-weight: bold;">-</button>
+                                    <input type="text" class="qty-input" value="${item.quantity || 1}" readonly style="width: 35px; text-align: center; border: none; font-size: 0.95rem;">
+                                    <button class="qty-btn plus-btn" onclick="updateQuantity(${index}, 1)" style="background: #f8f9fa; border: none; padding: 5px 12px; cursor: pointer; font-weight: bold;">+</button>
+                                </div>
+                                <button class="remove-item-btn" onclick="removeItem(${index})" style="background: none; border: none; color: #ff4757; font-size: 1.1rem; cursor: pointer;"><i class="fa-regular fa-trash-can"></i></button>
+                            </div>
+                        </div>
+                    `;
+                });
+                listContainer.innerHTML = htmlContent;
             }
+
+            if (pageTitle) {
+                pageTitle.innerHTML = `ตะกร้าสินค้า <span style="font-size: 1rem; color: #666; font-weight: normal;">(${cart.length} รายการ)</span>`;
+            }
+            
+            updateSummary();
         }
+
+        window.updateSummary = function() {
+            const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const checkboxes = document.querySelectorAll('.item-check');
+            let subtotal = 0;
+            let selectedCount = 0;
+
+            checkboxes.forEach((chk, index) => {
+                if (chk.checked && cart[index]) {
+                    subtotal += cart[index].price * (cart[index].quantity || 1);
+                    selectedCount += (cart[index].quantity || 1);
+                }
+            });
+
+            const summaryCount = document.getElementById('summary-item-count');
+            const summaryPrice = document.getElementById('summary-total-price');
+            if (summaryCount) summaryCount.textContent = `ยอดรวมสินค้า (${selectedCount} รายการ)`;
+            if (summaryPrice) summaryPrice.textContent = `฿${subtotal.toLocaleString()}`;
+        };
 
         window.updateQuantity = function(index, change) {
             let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -336,11 +309,21 @@
         if (checkoutBtn) {
             checkoutBtn.addEventListener('click', () => {
                 const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
-                if (cart.length === 0) {
-                    alert('กรุณาเลือกสินค้าในตะกร้าก่อนดำเนินการต่อ');
+                const checkboxes = document.querySelectorAll('.item-check');
+                let selectedItems = [];
+
+                checkboxes.forEach((chk, index) => {
+                    if (chk.checked && cart[index]) {
+                        selectedItems.push(cart[index]);
+                    }
+                });
+
+                if (selectedItems.length === 0) {
+                    alert('กรุณาเลือกสินค้าอย่างน้อย 1 รายการก่อนดำเนินการต่อ');
                     return;
                 }
-                localStorage.setItem('checkoutItems', JSON.stringify(cart));
+
+                localStorage.setItem('checkoutItems', JSON.stringify(selectedItems));
                 window.location.href = 'checkout.html';
             });
         }
@@ -360,24 +343,24 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-    const savedData = JSON.parse(localStorage.getItem('userAccountSettings')) || {};
-    const navProfileContainer = document.getElementById('nav-profile-container');
+            const savedData = JSON.parse(localStorage.getItem('userAccountSettings')) || {};
+            const navProfileContainer = document.getElementById('nav-profile-container');
 
-    if (navProfileContainer) {
-        if (savedData.avatarImage) {
-            navProfileContainer.innerHTML = `
-                <img src="${savedData.avatarImage}" alt="Profile">
-            `;
-        } else {
-            navProfileContainer.innerHTML = `
-                <i class="fa-solid fa-user" id="nav-user-icon"></i>
-            `;
-        }
-    }
+            if (navProfileContainer) {
+                if (savedData.avatarImage) {
+                    navProfileContainer.innerHTML = `
+                        <img src="${savedData.avatarImage}" alt="Profile">
+                    `;
+                } else {
+                    navProfileContainer.innerHTML = `
+                        <i class="fa-solid fa-user" id="nav-user-icon"></i>
+                    `;
+                }
+            }
 
-    loadCartItems();
-    updateCartBadge();
-});
+            loadCartItems();
+            updateCartBadge();
+        });
     </script>
 </body>
 </html>

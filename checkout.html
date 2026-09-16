@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ยืนยันคำสั่งซื้อ - Swap&go</title>
-  
+ 
     <link href="https://fonts.googleapis.com/css?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -23,7 +23,6 @@
             color: #333;
         }
 
-       
         .navbar {
             background: #fff;
             height: 60px;
@@ -224,6 +223,41 @@
             margin-bottom: 20px;
             border: 1px solid #eee;
         }
+
+        /* --- Responsive สำหรับมือถือและแท็บเล็ต (ต่ำกว่า 768px) --- */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 0 15px;
+            }
+            .nav-links, .nav-search {
+                display: none !important; /* ซ่อนเมนูยาวและช่องค้นหาบนมือถือ เพื่อป้องกันล้นจอ */
+            }
+            .checkout-container {
+                margin: 15px auto;
+                padding: 0 10px;
+            }
+            .address-box {
+                flex-direction: column;
+                align-items: flex-start !important;
+                gap: 15px;
+            }
+            .btn-edit-address {
+                width: 100%;
+                text-align: center;
+            }
+            .datetime-row {
+                flex-direction: column;
+                gap: 15px !important;
+            }
+            .checkout-footer-bar {
+                flex-direction: column;
+                align-items: stretch !important;
+                text-align: center;
+            }
+            .btn-confirm-order {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -257,9 +291,10 @@
     <!-- Navbar แถบเมนูด้านบน -->
     <header class="navbar">
         <div class="logo">
-            <a href="index.html">
-                <i class="fa-solid fa-graduation-cap"></i> Swap&go
-            </a>
+           <div class="logo">
+            <a href="index.html"></a>
+            <img src="logo.png"> Swap&go
+        </div>
         </div>
         <ul class="nav-links">
             <li><a href="index.html">หน้าแรก</a></li>
@@ -273,7 +308,6 @@
         <div class="nav-right-icons">
             <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
             
-            <!-- ไอคอนโปรไฟล์บน Navbar (ซิงค์อัตโนมัติ) -->
             <a href="account-settings.html" class="nav-profile-link">
                 <div class="nav-profile-circle" id="nav-profile-container">
                     <i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>
@@ -294,12 +328,12 @@
                 <div class="address-info" style="display: flex; gap: 15px; align-items: center;">
                     <i class="fa-solid fa-location-dot" style="font-size: 24px; color: #004d34;"></i>
                     <div class="address-details">
-                        <h4 style="margin: 0 0 5px 0;">นทรา มณีแสง</h4>
-                        <p style="margin: 0; color: #666; font-size: 14px;">นักศึกษา คณะวิทยาศาสตร์</p>
-                        <p style="margin: 0; color: #666; font-size: 14px;">095-123-4567</p>
+                        <h4 id="checkout-name" style="margin: 0 0 5px 0;">นทรา มณีแสง</h4>
+                        <p id="checkout-faculty" style="margin: 0; color: #666; font-size: 14px;">นักศึกษา คณะวิทยาศาสตร์</p>
+                        <p id="checkout-phone" style="margin: 0; color: #666; font-size: 14px;">095-123-4567</p>
                     </div>
                 </div>
-                <button class="btn-edit-address" style="padding: 6px 15px; background: #fff; border: 1px solid #004d34; color: #004d34; border-radius: 5px; cursor: pointer;">แก้ไข</button>
+                <a href="account-settings.html" class="btn-edit-address" style="padding: 6px 15px; background: #fff; border: 1px solid #004d34; color: #004d34; border-radius: 5px; text-decoration: none; display: inline-block; font-size: 0.9rem;">แก้ไข</a>
             </div>
         </div>
 
@@ -324,12 +358,12 @@
 
         <!-- วันที่และเวลานัดรับ -->
         <div class="checkout-section">
-            <div class="datetime-row" style="display: flex; gap: 20px; flex-wrap: wrap;">
-                <div class="datetime-group" style="flex: 1; min-width: 250px;">
+            <div class="datetime-row" style="display: flex; gap: 20px;">
+                <div class="datetime-group" style="flex: 1;">
                     <label style="display: block; margin-bottom: 8px; color: #555; font-weight: 500;">วันที่นัดรับ</label>
                     <input type="date" id="pickup-date" style="width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: 'Kanit'; outline: none; background: #fff;" required>
                 </div>
-                <div class="datetime-group" style="flex: 1; min-width: 250px;">
+                <div class="datetime-group" style="flex: 1;">
                     <label style="display: block; margin-bottom: 8px; color: #555; font-weight: 500;">เวลาที่สะดวก</label>
                     <select id="pickup-time" style="width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: 'Kanit'; background: #fff; outline: none;" required>
                         <option value="" disabled selected>เลือกช่วงเวลาที่สะดวก</option>
@@ -349,11 +383,11 @@
         <div class="checkout-section">
             <h3 class="checkout-section-title" style="margin-top: 0; margin-bottom: 15px; color: #333; font-size: 1.1rem;">วิธีการชำระเงิน</h3>
             <div class="payment-options-list">
-                <label class="payment-method-card" style="display: flex; gap: 15px; align-items: center; cursor: pointer;">
-                    <input type="radio" name="payment_method" id="pay-cash" checked style="accent-color: #004d34;">
+                <label class="payment-method-card" style="display: flex; gap: 15px; align-items: center; cursor: pointer; background: #fafafa; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <input type="radio" name="payment_method" id="pay-cash" checked style="accent-color: #004d34; width: 18px; height: 18px;">
                     <i class="fa-solid fa-hand-holding-dollar" style="font-size: 24px; color: #004d34;"></i>
                     <div class="payment-details">
-                        <h4 style="margin: 0 0 3px 0; font-size: 1rem;">ชำระสินค้าเมื่อได้รับสินค้า</h4>
+                        <h4 style="margin: 0 0 3px 0; font-size: 1rem; color: #222;">ชำระสินค้าเมื่อได้รับสินค้า</h4>
                         <p style="margin: 0; color: #777; font-size: 13px;">ถ้าต้องการจัดส่งสินค้าด้วยวิธีอื่น? ให้ติดต่อผู้ขายผ่านช่องข้อความ</p>
                     </div>
                 </label>
@@ -361,7 +395,7 @@
         </div>
         
         <!-- แถบยืนยันคำสั่งซื้อ -->
-        <div class="checkout-footer-bar" style="background: #fff; padding: 20px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #eee; margin-bottom: 40px; flex-wrap: wrap; gap: 15px;">
+        <div class="checkout-footer-bar" style="background: #fff; padding: 20px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #eee; margin-bottom: 40px; gap: 15px;">
             <div>
                 <span class="checkout-total-label" style="color: #666;">ยอดรวมทั้งหมด &nbsp;&nbsp;</span>
                 <span class="checkout-total-amount" id="final-total-price" style="font-size: 1.5rem; font-weight: 700; color: #004d34;">฿0</span>
@@ -403,7 +437,6 @@
     <!-- JavaScript สำหรับควบคุมระบบหน้า Checkout -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. โหลดรูปโปรไฟล์มาแสดงที่ Navbar อัตโนมัติ (รองรับทั้งอัปโหลดและ Google Login)
             const savedData = JSON.parse(localStorage.getItem('userAccountSettings')) || {};
             const navProfileContainer = document.getElementById('nav-profile-container');
 
@@ -415,7 +448,14 @@
                 }
             }
 
-            // 2. คำนวณราคารวมสินค้าจากรายการใน checkoutItems
+            const nameEl = document.getElementById('checkout-name');
+            const facultyEl = document.getElementById('checkout-faculty');
+            const phoneEl = document.getElementById('checkout-phone');
+
+            if (savedData.fullName && nameEl) nameEl.textContent = savedData.fullName;
+            if (savedData.faculty && facultyEl) facultyEl.textContent = savedData.faculty;
+            if (savedData.phone && phoneEl) phoneEl.textContent = savedData.phone;
+
             const checkoutItems = JSON.parse(localStorage.getItem('checkoutItems')) || [];
 
             let totalSum = 0;
@@ -439,7 +479,6 @@
                 }
             }
 
-            // 3. จัดการปุ่มยืนยันคำสั่งซื้อ
             if (confirmBtn) {
                 confirmBtn.addEventListener('click', () => {
                     if (totalSum <= 0 || checkoutItems.length === 0) {
@@ -473,7 +512,6 @@
             }
         });
 
-        // 4. ควบคุมการเปิด-ปิด Sidebar
         const menuToggleBtn = document.getElementById('menu-toggle-btn');
         const sidebar = document.getElementById('sidebar');
         const sidebarOverlay = document.getElementById('sidebar-overlay');
