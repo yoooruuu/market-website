@@ -5390,11 +5390,32 @@ textarea {
     .auth-buttons {
         order: 2;
     }
+}
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap; /* ป้องกันไม่ให้ขึ้นบรรทัดใหม่มั่วซั่ว */
+        gap: 8px;
+    }
 
-    /* 4. ช่องค้นหาให้ตกลงมาอยู่แถวที่ 2 เต็มความกว้างหน้าจอ จะได้ไม่ไปทับใคร */
+    /* ซ่อนลิงก์เมนูตัวหนังสือเดิม */
+    .nav-links {
+        display: none !important;
+    }
+
+    /* ปรับช่องค้นหาให้มีขนาดกะทัดรัด อยู่ในแถวเดียวกับด้านบนได้ */
     .nav-search {
-        order: 3;
-        width: 100% !important;
-        margin-top: 5px;
+        display: flex !important;
+        width: 110px !important; /* ย่อความกว้างลงให้พอดีกับพื้นที่ที่เหลือ */
+        padding: 4px 10px !important;
+        margin-top: 0 !important;
+    }
+
+    .nav-search input {
+        font-size: 0.8rem;
     }
 }
