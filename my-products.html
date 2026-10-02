@@ -235,9 +235,12 @@
 
         .products-header-row {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 20px;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 25px;
+            gap: 15px;
         }
 
         .products-title {
@@ -246,24 +249,19 @@
             color: #222;
         }
 
-        .products-title span {
-            font-size: 0.95rem;
-            color: #666;
-            font-weight: normal;
-        }
-
         .btn-add-product {
             background: #004d34;
             color: #fff;
-            padding: 8px 18px;
+            padding: 10px 24px;
             border-radius: 20px;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .btn-add-product:hover {
@@ -425,15 +423,15 @@
             <button class="close-btn" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <ul class="sidebar-menu">
-            <li><a href="index.html"><i class="fa-solid fa-house"></i> หน้าแรก</a></li>
+           <li class="active"><a href="index.html"><i class="fa-solid fa-house"></i> หน้าแรก</a></li>
             <li><a href="catalog.html"><i class="fa-solid fa-border-all"></i> สินค้าทั้งหมด</a></li>
             <li><a href="category.html"><i class="fa-solid fa-list"></i> หมวดหมู่</a></li>
             <li><a href="profile.html"><i class="fa-solid fa-user"></i> โปรไฟล์ของฉัน</a></li>
             <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> ตะกร้าสินค้า</a></li>
-            <li><a href="shopping.html"><i class="fa-solid fa-bag-shopping"></i> การซื้อของฉัน</a></li>
-            <li><a href="my-reviews.html"><i class="fa-solid fa-star"></i> รีวิวของฉัน</a></li>
-            <li class="active"><a href="my-products.html"><i class="fa-solid fa-box"></i> สินค้าของฉัน</a></li>
+            <li><a href="my-products.html"><i class="fa-solid fa-box"></i> สินค้าของฉัน</a></li>
+            <li><a href="my-reviews.html"><i class="fa-solid fa-line"></i> แก้ไข้สินค้า</a></li>
             <li><a href="account-settings.html"><i class="fa-solid fa-gear"></i> ตั้งค่าบัญชี</a></li>
+        </ul>
         </ul>
         <hr class="sidebar-divider">
         <ul class="sidebar-menu">
@@ -507,7 +505,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-  
             const savedData = JSON.parse(localStorage.getItem('userAccountSettings')) || {};
             const navProfileContainer = document.getElementById('nav-profile-container');
 
@@ -519,11 +516,9 @@
                 }
             }
 
-           
-            loadMyProducts('ทั้งหมด');
+            loadMyProducts();
         });
 
-   
         const menuToggle = document.getElementById('menu-toggle');
         const closeBtn = document.getElementById('close-btn');
         const sidebar = document.getElementById('sidebar');
@@ -544,43 +539,21 @@
             }
         }
 
-   
-        function loadMyProducts(filterStatus = 'ทั้งหมด') {
+        function loadMyProducts() {
             const container = document.querySelector('.main-container');
-            let products = JSON.parse(localStorage.getItem('myProducts')) || [
-                { id: 1, name: "หนังสือเรียนคอมพิวเตอร์กราฟิก", price: 180, date: "12 ส.ค. 2569", status: "กำลังขาย", image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=200" },
-                { id: 2, name: "หนังสือชีววิทยา มือสอง", price: 250, date: "10 ส.ค. 2569", status: "ขายแล้ว", image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=200" },
-                { id: 3, name: "อุปกรณ์วาดภาพดิจิทัล", price: 590, date: "5 ส.ค. 2569", status: "กำลังขาย", image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=200" }
-            ];
-
+            let products = JSON.parse(localStorage.getItem('myProducts')) || [];
             const totalCount = products.length;
-            const sellingCount = products.filter(p => p.status === 'กำลังขาย').length;
-            const soldCount = products.filter(p => p.status === 'ขายแล้ว').length;
 
-            let filteredProducts = products;
-            if (filterStatus === 'กำลังขาย') {
-                filteredProducts = products.filter(p => p.status === 'กำลังขาย');
-            } else if (filterStatus === 'ขายแล้ว') {
-                filteredProducts = products.filter(p => p.status === 'ขายแล้ว');
-            }
-
+            // แสดงเฉพาะหัวข้อและปุ่มลงขายสินค้าตรงกลาง โดยเอาแท็บและกล่องข้อความสถานะออกทั้งหมด
             let htmlContent = `
                 <div class="products-header-row">
                     <h1 class="products-title">สินค้าของฉัน <span>(${totalCount} รายการ)</span></h1>
                     <a href="add-product.html" class="btn-add-product"><i class="fa-solid fa-plus"></i> ลงขายสินค้า</a>
                 </div>
-
-                <div class="product-tabs">
-                    <button class="tab-item ${filterStatus === 'ทั้งหมด' ? 'active' : ''}" onclick="filterProducts('ทั้งหมด')">ทั้งหมด (${totalCount})</button>
-                    <button class="tab-item ${filterStatus === 'กำลังขาย' ? 'active' : ''}" onclick="filterProducts('กำลังขาย')">กำลังขาย (${sellingCount})</button>
-                    <button class="tab-item ${filterStatus === 'ขายแล้ว' ? 'active' : ''}" onclick="filterProducts('ขายแล้ว')">ขายแล้ว (${soldCount})</button>
-                </div>
             `;
 
-            if (filteredProducts.length === 0) {
-                htmlContent += `<div style="text-align: center; color: #888; padding: 40px; background: #fff; border-radius: 10px; border: 1px solid #e2e8f0;">ไม่มีรายการสินค้าในสถานะนี้</div>`;
-            } else {
-                filteredProducts.forEach((product) => {
+            if (products.length > 0) {
+                products.forEach((product) => {
                     const isSelling = product.status === 'กำลังขาย';
                     htmlContent += `
                         <div class="product-item-card">
@@ -600,6 +573,7 @@
                                         <button onclick="deleteProduct(${product.id})" class="btn-action-delete">ลบ</button>
                                     ` : `
                                         <button onclick="viewDetail(${product.id})" class="btn-action-detail">ดูรายละเอียด</button>
+                                        <button onclick="deleteProduct(${product.id})" class="btn-action-delete">ลบ</button>
                                     `}
                                 </div>
                             </div>
@@ -611,16 +585,12 @@
             container.innerHTML = htmlContent;
         }
 
-        window.filterProducts = function(status) {
-            loadMyProducts(status);
-        };
-
         window.deleteProduct = function(id) {
             if (confirm('คุณต้องการลบสินค้านี้ใช่หรือไม่?')) {
                 let products = JSON.parse(localStorage.getItem('myProducts')) || [];
                 products = products.filter(p => p.id !== id);
                 localStorage.setItem('myProducts', JSON.stringify(products));
-                loadMyProducts('ทั้งหมด');
+                loadMyProducts();
             }
         };
 
