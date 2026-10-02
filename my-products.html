@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>สินค้าของฉัน - Swap&go</title>
-     <link rel="icon" type="image/png" href="logo.png">
-  
+    <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-  
+    
     <style>
         * {
             margin: 0;
@@ -45,6 +43,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            text-decoration: none;
         }
 
         .nav-links {
@@ -135,7 +134,6 @@
             object-fit: cover;
         }
 
-    
         .sidebar-overlay {
             position: fixed;
             top: 0;
@@ -226,189 +224,54 @@
             border-top: 1px solid #eee;
         }
 
-        /* --- Main Container --- */
+        /* --- Main Container (จัดกึ่งกลางทั้งหมด) --- */
         .main-container {
             max-width: 900px;
-            margin: 30px auto;
+            margin: 50px auto;
             padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .products-header-row {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            margin-bottom: 25px;
-            gap: 15px;
+            gap: 20px;
+            width: 100%;
         }
 
         .products-title {
-            font-size: 1.25rem;
+            font-size: 1.6rem;
             font-weight: 600;
             color: #222;
+        }
+
+        .products-title span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
         }
 
         .btn-add-product {
             background: #004d34;
             color: #fff;
-            padding: 10px 24px;
-            border-radius: 20px;
+            padding: 12px 25px;
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 500;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: 0.2s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0,77,52,0.2);
         }
 
         .btn-add-product:hover {
             background: #003825;
-        }
-
-        /* --- Product Tabs --- */
-        .product-tabs {
-            display: flex;
-            gap: 30px;
-            border-bottom: 1px solid #e2e8f0;
-            margin-bottom: 25px;
-        }
-
-        .tab-item {
-            font-size: 0.95rem;
-            color: #666;
-            text-decoration: none;
-            padding-bottom: 10px;
-            position: relative;
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-family: 'Kanit', sans-serif;
-        }
-
-        .tab-item.active {
-            color: #004d34;
-            font-weight: 600;
-        }
-
-        .tab-item.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: #004d34;
-            border-radius: 2px 2px 0 0;
-        }
-
-        /* --- Product Item Cards --- */
-        .product-item-card {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 18px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-            width: 100%;
-        }
-
-        .product-item-left {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .product-thumb {
-            width: 70px;
-            height: 70px;
-            border-radius: 8px;
-            object-fit: cover;
-            background: #e9ecef;
-        }
-
-        .product-info h4 {
-            font-size: 1rem;
-            font-weight: 500;
-            color: #222;
-            margin-bottom: 2px;
-        }
-
-        .product-price {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #004d34;
-            margin-bottom: 2px;
-        }
-
-        .product-date {
-            font-size: 0.8rem;
-            color: #888;
-        }
-
-        .product-item-right {
-            text-align: right;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 8px;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 3px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .status-selling {
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .status-sold {
-            background: #e2e3e5;
-            color: #383d41;
-        }
-
-        .product-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn-action-edit, 
-        .btn-action-delete, 
-        .btn-action-detail {
-            padding: 4px 14px;
-            border-radius: 6px;
-            font-size: 0.82rem;
-            font-weight: 500;
-            text-decoration: none;
-            cursor: pointer;
-            border: 1px solid transparent;
-        }
-
-        .btn-action-edit {
-            background: #fff;
-            border-color: #cbd5e1;
-            color: #475569;
-        }
-
-        .btn-action-delete {
-            background: #fff;
-            border-color: #fecdd3;
-            color: #e11d48;
-        }
-
-        .btn-action-detail {
-            background: #f1f5f9;
-            color: #475569;
         }
     </style>
 </head>
@@ -416,22 +279,18 @@
 
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-    
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h3>เมนูจัดการ</h3>
             <button class="close-btn" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <ul class="sidebar-menu">
-           <li class="active"><a href="index.html"><i class="fa-solid fa-house"></i> หน้าแรก</a></li>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> หน้าแรก</a></li>
             <li><a href="catalog.html"><i class="fa-solid fa-border-all"></i> สินค้าทั้งหมด</a></li>
-            <li><a href="category.html"><i class="fa-solid fa-list"></i> หมวดหมู่</a></li>
             <li><a href="profile.html"><i class="fa-solid fa-user"></i> โปรไฟล์ของฉัน</a></li>
-            <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> ตะกร้าสินค้า</a></li>
-            <li><a href="my-products.html"><i class="fa-solid fa-box"></i> สินค้าของฉัน</a></li>
-            <li><a href="my-reviews.html"><i class="fa-solid fa-line"></i> แก้ไข้สินค้า</a></li>
+            <li class="active"><a href="my-products.html"><i class="fa-solid fa-box"></i> สินค้าของฉัน</a></li>
+             <li><a href="fix.html"><i class="fa-solid fa-pen-to-square"></i></i> แก้ไข้สินค้า</a></li>
             <li><a href="account-settings.html"><i class="fa-solid fa-gear"></i> ตั้งค่าบัญชี</a></li>
-        </ul>
         </ul>
         <hr class="sidebar-divider">
         <ul class="sidebar-menu">
@@ -440,46 +299,40 @@
     </aside>
 
     <header class="navbar">
-        <div class="logo">
-            <a href="index.html"></a>
-            <img src="logo.png"> Swap&go
-        </div>
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="Logo" style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%;"> Swap&go
+        </a>
         <ul class="nav-links">
             <li><a href="index.html">หน้าแรก</a></li>
             <li><a href="catalog.html">สินค้าทั้งหมด</a></li>
-            <li><a href="category.html">หมวดหมู่</a></li>
         </ul>
         <div class="nav-search">
             <i class="fa-solid fa-magnifying-glass" style="color: #888; font-size: 0.85rem;"></i>
             <input type="text" placeholder="ค้นหา...">
         </div>
         <div class="nav-right-icons">
-            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i><span class="cart-badge" id="cart-badge">2</span></a>
-            
-            <!-- ไอคอนโปรไฟล์บน Navbar (ซิงค์อัตโนมัติ) -->
             <a href="account-settings.html" class="nav-profile-link">
                 <div class="nav-profile-circle" id="nav-profile-container">
                     <i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>
                 </div>
             </a>
-
-            <!-- ปุ่มไอคอน 3 ขีด เปิด/ปิด Sidebar -->
             <i class="fa-solid fa-bars" id="menu-toggle" title="เปิด/ปิดเมนู" style="cursor: pointer;"></i>
         </div>
     </header>
 
-  
     <main class="main-container">
-      
+        <div class="products-header-row">
+            <h1 class="products-title">สินค้าของฉัน <span>(0 รายการ)</span></h1>
+            <a href="add-product.html" class="btn-add-product"><i class="fa-solid fa-plus"></i> ลงขายสินค้า</a>
+        </div>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" style="margin-top: 80px;">
         <div class="footer-contact-container">
             <div class="footer-contact-left">
-               <div class="logo">
-            <a href="index.html"></a>
-            <img src="logo.png"> Swap&go
-        </div>
+                <a href="index.html" class="logo" style="margin-bottom: 15px; display: inline-flex;">
+                    <img src="logo.png" alt="Logo" style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%;"> Swap&go
+                </a>
                 <h3 class="footer-contact-title">ติดต่อเรา</h3>
                 <p class="footer-contact-desc">มีข้อสงสัย หรือต้องการสอบถามข้อมูลเพิ่มเติม สามารถติดต่อเราได้ผ่านช่องทางด้านล่างนี้</p>
                 
@@ -515,8 +368,6 @@
                     navProfileContainer.innerHTML = `<i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>`;
                 }
             }
-
-            loadMyProducts();
         });
 
         const menuToggle = document.getElementById('menu-toggle');
@@ -538,69 +389,6 @@
                 sidebarOverlay.classList.remove('active');
             }
         }
-
-        function loadMyProducts() {
-            const container = document.querySelector('.main-container');
-            let products = JSON.parse(localStorage.getItem('myProducts')) || [];
-            const totalCount = products.length;
-
-            // แสดงเฉพาะหัวข้อและปุ่มลงขายสินค้าตรงกลาง โดยเอาแท็บและกล่องข้อความสถานะออกทั้งหมด
-            let htmlContent = `
-                <div class="products-header-row">
-                    <h1 class="products-title">สินค้าของฉัน <span>(${totalCount} รายการ)</span></h1>
-                    <a href="add-product.html" class="btn-add-product"><i class="fa-solid fa-plus"></i> ลงขายสินค้า</a>
-                </div>
-            `;
-
-            if (products.length > 0) {
-                products.forEach((product) => {
-                    const isSelling = product.status === 'กำลังขาย';
-                    htmlContent += `
-                        <div class="product-item-card">
-                            <div class="product-item-left">
-                                <img src="${product.image}" alt="${product.name}" class="product-thumb">
-                                <div class="product-info">
-                                    <h4>${product.name}</h4>
-                                    <div class="product-price">฿${Number(product.price).toLocaleString()}</div>
-                                    <div class="product-date">ลงขายเมื่อ ${product.date}</div>
-                                </div>
-                            </div>
-                            <div class="product-item-right">
-                                <span class="status-badge ${isSelling ? 'status-selling' : 'status-sold'}">${product.status}</span>
-                                <div class="product-actions">
-                                    ${isSelling ? `
-                                        <button onclick="editProduct(${product.id})" class="btn-action-edit">แก้ไข</button>
-                                        <button onclick="deleteProduct(${product.id})" class="btn-action-delete">ลบ</button>
-                                    ` : `
-                                        <button onclick="viewDetail(${product.id})" class="btn-action-detail">ดูรายละเอียด</button>
-                                        <button onclick="deleteProduct(${product.id})" class="btn-action-delete">ลบ</button>
-                                    `}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-
-            container.innerHTML = htmlContent;
-        }
-
-        window.deleteProduct = function(id) {
-            if (confirm('คุณต้องการลบสินค้านี้ใช่หรือไม่?')) {
-                let products = JSON.parse(localStorage.getItem('myProducts')) || [];
-                products = products.filter(p => p.id !== id);
-                localStorage.setItem('myProducts', JSON.stringify(products));
-                loadMyProducts();
-            }
-        };
-
-        window.editProduct = function(id) {
-            window.location.href = `edit-product.html?id=${id}`;
-        };
-
-        window.viewDetail = function(id) {
-            window.location.href = `product-buy.html?id=${id}`;
-        };
     </script>
 </body>
 </html>

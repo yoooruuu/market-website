@@ -334,14 +334,12 @@
             background: #fff;
         }
 
-
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 20px;
         }
     
-
         html, body {
             width: 100%;
             max-width: 100%;
@@ -512,142 +510,7 @@
                 padding: 15px;
             }
         }
-
-        @media (max-width: 480px) {
-            .navbar {
-                padding: 9px 12px;
-            }
-
-            .navbar .logo a {
-                font-size: 0.95rem;
-            }
-
-            .nav-right-icons {
-                gap: 10px;
-                font-size: 1.05rem;
-            }
-
-            .nav-profile-circle {
-                width: 28px;
-                height: 28px;
-            }
-
-            .catalog-container {
-                padding: 0 10px;
-                margin: 15px auto;
-            }
-
-            .sidebar-filter {
-                padding: 15px;
-                border-radius: 8px;
-            }
-
-            .checkbox-list {
-                grid-template-columns: 1fr;
-                gap: 9px;
-            }
-
-            .filter-title {
-                font-size: 1.05rem;
-            }
-
-            .catalog-header {
-                padding: 12px;
-                border-radius: 8px;
-            }
-
-            .catalog-title {
-                font-size: 1.1rem;
-            }
-
-            .item-count {
-                font-size: 0.82rem;
-            }
-
-            .sort-dropdown {
-                font-size: 0.85rem;
-            }
-
-            .sort-dropdown select {
-                max-width: 170px;
-                padding: 6px 8px;
-            }
-
-            .product-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 8px;
-            }
-
-            .product-card {
-                padding: 8px !important;
-                border-radius: 8px !important;
-            }
-
-            .product-card img {
-                height: 115px !important;
-                border-radius: 6px !important;
-                margin-bottom: 7px !important;
-            }
-
-            .product-card div[style*="-webkit-line-clamp"] {
-                font-size: 0.82rem !important;
-            }
-
-            .product-card div[style*="font-size: 1rem"] {
-                font-size: 0.9rem !important;
-            }
-
-            .footer-contact-container {
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-
-            .footer-contact-desc {
-                font-size: 0.85rem;
-            }
-
-            .footer-contact-info {
-                font-size: 0.85rem;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .navbar .logo a {
-                font-size: 0.88rem;
-            }
-
-            .nav-right-icons {
-                gap: 7px;
-                font-size: 0.95rem;
-            }
-
-            .nav-profile-circle {
-                width: 26px;
-                height: 26px;
-            }
-
-            .product-grid {
-                gap: 6px;
-            }
-
-            .product-card {
-                padding: 6px !important;
-            }
-
-            .product-card img {
-                height: 100px !important;
-            }
-
-            .catalog-title {
-                font-size: 1rem;
-            }
-
-            .item-count {
-                font-size: 0.75rem;
-            }
-        }
-
-</style>
+    </style>
 </head>
 <body>
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
@@ -656,15 +519,13 @@
         <div class="sidebar-header">
             <h3>เมนูจัดการ</h3>
             <button class="close-btn" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
-        </div>
+        </div>  
         <ul class="sidebar-menu">
             <li class="active"><a href="index.html"><i class="fa-solid fa-house"></i> หน้าแรก</a></li>
             <li><a href="catalog.html"><i class="fa-solid fa-border-all"></i> สินค้าทั้งหมด</a></li>
-            <li><a href="category.html"><i class="fa-solid fa-list"></i> หมวดหมู่</a></li>
             <li><a href="profile.html"><i class="fa-solid fa-user"></i> โปรไฟล์ของฉัน</a></li>
-            <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> ตะกร้าสินค้า</a></li>
             <li><a href="my-products.html"><i class="fa-solid fa-box"></i> สินค้าของฉัน</a></li>
-            <li><a href="my-reviews.html"><i class="fa-solid fa-line"></i> แก้ไข้สินค้า</a></li>
+             <li><a href="fix.html"><i class="fa-solid fa-pen-to-square"></i></i> แก้ไข้สินค้า</a></li>
             <li><a href="account-settings.html"><i class="fa-solid fa-gear"></i> ตั้งค่าบัญชี</a></li>
         </ul>
         <hr class="sidebar-divider">
@@ -683,22 +544,20 @@
         <ul class="nav-links">
             <li><a href="index.html" class="active">หน้าแรก</a></li>
             <li><a href="catalog.html">สินค้าทั้งหมด</a></li>
-            <li><a href="category.html">หมวดหมู่</a></li>
         </ul>
         <div class="nav-search">
             <i class="fa-solid fa-magnifying-glass" style="color: #888; font-size: 0.85rem;"></i>
             <input type="text" placeholder="ค้นหา...">
         </div>
         <div class="nav-right-icons">
-            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
-        
+        <a href="add-product.html" style="background-color: #004d34; color: #ffffff; padding: 3px 5px; border-radius: 10px; text-decoration: none; font-size: 1rem ;"  >เริ่มขายเลย</a>
             <a href="profile.html" class="nav-profile-link">
                 <div class="nav-profile-circle" id="nav-profile-container">
                     <i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>
                 </div>
             </a>
             <i class="fa-solid fa-bars" id="menu-toggle" style="cursor: pointer;" title="เปิด/ปิดเมนู"></i>
-        </div>
+        </div>  
     </header>
 
     <header class="hero">
@@ -713,28 +572,204 @@
         </div>
     </header>
 
-    <section class="features">
-        <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-            <h3>ราคาดี</h3>
-            <p>ประหยัดกว่า</p>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-border-all"></i></div>
-            <h3>สินค้าหลากหลาย</h3>
-            <p>ครบทุกหมวด</p>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-            <h3>ปลอดภัย</h3>
-            <p>ตรวจสอบได้</p>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-users"></i></div>
-            <h3>ส่งต่อโอกาส</h3>
-            <p>ให้เพื่อนนักศึกษา</p>
+    <section class="custom-features-section">
+        <div class="custom-features-container">
+            <div class="custom-category-grid">
+                
+                <a href="catalog.html?category=หนังสือ" class="custom-category-card">
+                    <div class="custom-icon-wrapper">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+                    <div class="custom-category-info">
+                        <h3 class="custom-category-name">หนังสือ</h3>
+                        <span class="custom-category-count">0 รายการ</span>
+                    </div>
+                </a>
+
+                <a href="catalog.html?category=อุปกรณ์ไอที" class="custom-category-card">
+                    <div class="custom-icon-wrapper">
+                        <i class="fa-solid fa-laptop"></i>
+                    </div>
+                    <div class="custom-category-info">
+                        <h3 class="custom-category-name">อุปกรณ์ไอที</h3>
+                        <span class="custom-category-count">0 รายการ</span>
+                    </div>
+                </a>
+
+                <a href="catalog.html?category=เสื้อผ้า" class="custom-category-card">
+                    <div class="custom-icon-wrapper">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <div class="custom-category-info">
+                        <h3 class="custom-category-name">เสื้อผ้า</h3>
+                        <span class="custom-category-count">0 รายการ</span>
+                    </div>
+                </a>
+
+                <a href="catalog.html?category=อุปกรณ์การเรียน" class="custom-category-card">
+                    <div class="custom-icon-wrapper">
+                        <i class="fa-solid fa-pen-ruler"></i>
+                    </div>
+                    <div class="custom-category-info">
+                        <h3 class="custom-category-name">อุปกรณ์การเรียน</h3>
+                        <span class="custom-category-count">0 รายการ</span>
+                    </div>
+                </a>
+
+                <a href="catalog.html?category=ของใช้ในหอ" class="custom-category-card">
+                    <div class="custom-icon-wrapper">
+                        <i class="fa-solid fa-bed"></i>
+                    </div>
+                    <div class="custom-category-info">
+                        <h3 class="custom-category-name">ของใช้ในหอ</h3>
+                        <span class="custom-category-count">0 รายการ</span>
+                    </div>
+                </a>
+
+                <a href="catalog.html?category=ของใช้ส่วนตัว" class="custom-category-card">
+                    <div class="custom-icon-wrapper">
+                        <i class="fa-solid fa-user-tag"></i>
+                    </div>
+                    <div class="custom-category-info">
+                        <h3 class="custom-category-name">ของใช้ส่วนตัว</h3>
+                        <span class="custom-category-count">0 รายการ</span>
+                    </div>
+                </a>
+
+                <a href="catalog.html?category=อื่นๆ" class="custom-category-card">
+                    <div class="custom-icon-wrapper">
+                        <i class="fa-solid fa-box-archive"></i>
+                    </div>
+                    <div class="custom-category-info">
+                        <h3 class="custom-category-name">อื่นๆ</h3>
+                        <span class="custom-category-count">0 รายการ</span>
+                    </div>
+                </a>
+
+            </div>
         </div>
     </section>
+
+    <style>
+        .custom-features-section {
+            padding: 30px 0;
+            background: transparent;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .custom-features-container {
+            width: 100%;
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 0 30px;
+            box-sizing: border-box;
+        }
+
+        .custom-category-grid {
+            display: grid;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            gap: 16px;
+            width: 100%;
+        }
+
+        .custom-category-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 25px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: all 0.25s ease;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .custom-category-card:hover {
+            transform: translateY(-4px);
+            border-color: #004d34;
+            box-shadow: 0 8px 20px rgba(0, 77, 52, 0.1);
+        }
+
+        .custom-category-card:hover .custom-icon-wrapper {
+            background-color: #004d34;
+            color: #ffffff;
+        }
+
+        .custom-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: #e8f5e9;
+            color: #004d34;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            transition: all 0.25s ease;
+        }
+
+        .custom-category-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .custom-category-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .custom-category-count {
+            font-size: 0.8rem;
+            color: #64748b;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* รองรับหน้าจอขนาดเล็กให้แสดงผลพอดี */
+        @media (max-width: 1024px) {
+            .custom-category-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .custom-category-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+            .custom-features-container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+
+    <style>
+        .category-box-card:hover {
+            transform: translateY(-4px) !important;
+            border-color: #004d34 !important;
+            box-shadow: 0 8px 20px rgba(0, 77, 52, 0.1) !important;
+        }
+        .category-box-card:hover .category-icon-wrapper {
+            background-color: #004d34 !important;
+            color: #ffffff !important;
+        }
+    </style>
 
     <main class="products-section">
         <h2 class="section-title">สินค้าล่าสุด</h2>
@@ -791,10 +826,10 @@
                     <li><i class="fa-solid fa-location-dot"></i> มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ</li>
                 </ul>
 
-                <div class="footer-social-icons">
-                    <a href="https://line.me/ti/p/edEMCFLm-k" class="footer-social-icon social-line"><i class="fa-brands fa-line"></i></a>
-                    <a href="https://www.instagram.com/yoxurth?stkn=MTA5b3k5a3kzOGQ1NA==" class="footer-social-icon social-ig"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/share/1MLeNK6Gc1/?mibextid=wwXIfr" class="footer-social-icon social-fb"><i class="fa-brands fa-facebook-f"></i></a>
+               <div class="footer-social-icons">
+                    <a href="#" class="footer-social-icon social-line"><i class="fa-brands fa-line"></i></a>
+                    <a href="#" class="footer-social-icon social-ig"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="footer-social-icon social-fb"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
             <div class="footer-contact-right">
@@ -808,7 +843,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-          
+         
             const savedData = JSON.parse(localStorage.getItem('userAccountSettings')) || {};
             
            

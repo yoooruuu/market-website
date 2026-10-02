@@ -253,21 +253,6 @@
             cursor: pointer;
         }
 
-        .price-slider {
-            width: 100%;
-            accent-color: #004d34;
-            cursor: pointer;
-        }
-
-        .price-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #111;
-            margin-top: 8px;
-        }
-
         #btn-search-filter {
             width: 100%;
             background: #004d34;
@@ -332,14 +317,12 @@
             background: #fff;
         }
 
-
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 20px;
         }
     
-
         html, body {
             width: 100%;
             max-width: 100%;
@@ -644,8 +627,7 @@
                 font-size: 0.75rem;
             }
         }
-
-</style>
+    </style>
 </head>
 <body>
 
@@ -658,13 +640,10 @@
         <ul class="sidebar-menu">
            <li class="active"><a href="index.html"><i class="fa-solid fa-house"></i> หน้าแรก</a></li>
             <li><a href="catalog.html"><i class="fa-solid fa-border-all"></i> สินค้าทั้งหมด</a></li>
-            <li><a href="category.html"><i class="fa-solid fa-list"></i> หมวดหมู่</a></li>
             <li><a href="profile.html"><i class="fa-solid fa-user"></i> โปรไฟล์ของฉัน</a></li>
-            <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> ตะกร้าสินค้า</a></li>
             <li><a href="my-products.html"><i class="fa-solid fa-box"></i> สินค้าของฉัน</a></li>
-            <li><a href="my-reviews.html"><i class="fa-solid fa-line"></i> แก้ไข้สินค้า</a></li>
+             <li><a href="fix.html"><i class="fa-solid fa-pen-to-square"></i></i> แก้ไข้สินค้า</a></li>
             <li><a href="account-settings.html"><i class="fa-solid fa-gear"></i> ตั้งค่าบัญชี</a></li>
-        </ul>
         </ul>
         <hr class="sidebar-divider">
         <ul class="sidebar-menu">
@@ -674,24 +653,22 @@
 
     <header class="navbar">
         <div class="logo">
-           <div class="logo">
-            <a href="index.html"></a>
-            <img src="logo.png"> Swap&go
-        </div>
+            <a href="index.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #004d34; font-weight: 700; font-size: 1.2rem;">
+                <img src="logo.png" alt="Logo" style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%;"> 
+                Swap&go
+            </a>
         </div>
         <ul class="nav-links">
             <li><a href="index.html">หน้าแรก</a></li>
             <li><a href="catalog.html" class="active" style="color: #004d34; font-weight: 500;">สินค้าทั้งหมด</a></li>
-            <li><a href="category.html">หมวดหมู่</a></li>
         </ul>
         <div class="nav-search">
             <i class="fa-solid fa-magnifying-glass" style="color: #888;"></i>
             <input type="text" placeholder="ค้นหา...">
         </div>
         <div class="nav-right-icons">
-            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
         
-            <a href="account-settings.html" class="nav-profile-link">
+            <a href="profile.html" class="nav-profile-link">
                 <div class="nav-profile-circle" id="nav-profile-container">
                     <i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>
                 </div>
@@ -701,7 +678,7 @@
         </div>
     </header>
 
-  
+ 
     <main class="catalog-container">
 
         <aside class="sidebar-filter">
@@ -720,16 +697,6 @@
             </div>
 
             <div class="filter-group">
-                <h3 class="filter-title">ช่วงราคา</h3>
-                <div class="price-slider-wrapper">
-                    <input type="range" id="priceSlider" min="0" max="5000" value="5000" class="price-slider">
-                    <div class="price-labels">
-                        <span id="minPrice">0</span>
-                        <span id="maxPrice">5,000</span>
-                    </div>
-                </div>
-            </div>
-            <div class="filter-group">
                 <h3 class="filter-title">สภาพสินค้า</h3>
                 <ul class="checkbox-list">
                     <li><input type="checkbox" value="มือสอง-สภาพดี" class="cond-checkbox"><label>มือสอง-สภาพดี</label></li>
@@ -739,6 +706,7 @@
 
             <button id="btn-search-filter">ค้นหา</button>
         </aside>
+        
         <section class="catalog-content">
             <div class="catalog-header">
                 <div class="catalog-title-group">
@@ -755,7 +723,6 @@
                 </div>
             </div>
             
-
             <div class="product-grid" id="catalog-grid">
             </div>
         </section>
@@ -764,10 +731,12 @@
     <footer class="site-footer" style="margin-top: 50px;">
         <div class="footer-contact-container">
             <div class="footer-contact-left">
-               <div class="logo">
-            <a href="index.html"></a>
-            <img src="logo.png"> Swap&go
-        </div>
+                <div class="footer-logo">
+                    <a href="index.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #004d34; font-weight: 700; font-size: 1.1rem;">
+                        <img src="logo.png" alt="Logo" style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%;"> 
+                        Swap&go
+                    </a>
+                </div>
                 <h3 class="footer-contact-title">ติดต่อเรา</h3>
                 <p class="footer-contact-desc">มีข้อสงสัย หรือต้องการสอบถามข้อมูลเพิ่มเติม สามารถติดต่อเราได้ผ่านช่องทางด้านล่างนี้</p>
                 
@@ -791,7 +760,6 @@
         </div>
     </footer>
 
-    
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const savedData = JSON.parse(localStorage.getItem('userAccountSettings')) || {};
@@ -818,7 +786,7 @@
             }
         });
 
-  
+ 
         const menuToggle = document.getElementById('menu-toggle');
         const closeBtn = document.getElementById('close-btn');
         const sidebar = document.getElementById('sidebar');
@@ -839,44 +807,26 @@
             sidebarOverlay.classList.remove('active');
         }
 
-
-        const priceSlider = document.getElementById('priceSlider');
-        const maxPriceLabel = document.getElementById('maxPrice');
-        if (priceSlider && maxPriceLabel) {
-            priceSlider.addEventListener('input', function() {
-                maxPriceLabel.textContent = Number(this.value).toLocaleString();
-            });
-        }
-
-      
         function filterAndRenderProducts() {
             const catalogGrid = document.getElementById('catalog-grid');
             const itemCountLabel = document.getElementById('item-count');
-            const maxPrice = Number(document.getElementById('priceSlider').value);
             const sortOption = document.getElementById('sort-select').value;
 
             const selectedCategories = Array.from(document.querySelectorAll('.cat-checkbox:checked'))
                 .map(cb => cb.value);
 
-       
             const selectedConditions = Array.from(document.querySelectorAll('.cond-checkbox:checked'))
                 .map(cb => cb.value);
 
             let allProducts = JSON.parse(localStorage.getItem('allProducts')) || [];
 
-      
             let filtered = selectedCategories.length === 0 
                 ? allProducts 
                 : allProducts.filter(p => selectedCategories.includes(p.category));
 
-  
             if (selectedConditions.length > 0) {
                 filtered = filtered.filter(p => selectedConditions.includes(p.condition));
             }
-
-
-            filtered = filtered.filter(p => Number(p.price) <= maxPrice);
-
 
             if (sortOption === 'price-low') {
                 filtered.sort((a, b) => Number(a.price) - Number(b.price));
@@ -890,7 +840,6 @@
                 itemCountLabel.textContent = `(${filtered.length} รายการ)`;
             }
 
-       
             if (filtered.length === 0) {
                 catalogGrid.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 50px; color: #64748b;">

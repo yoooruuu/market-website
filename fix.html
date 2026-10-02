@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ลงขายสินค้า - Swap&go</title>
+    <title>แก้ไขข้อมูลสินค้า - Swap&go</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -377,7 +377,7 @@
             <li><a href="catalog.html"><i class="fa-solid fa-border-all"></i> สินค้าทั้งหมด</a></li>
             <li><a href="profile.html"><i class="fa-solid fa-user"></i> โปรไฟล์ของฉัน</a></li>
             <li><a href="my-products.html"><i class="fa-solid fa-box"></i> สินค้าของฉัน</a></li>
-            <li><a href="fix.html"><i class="fa-solid fa-pen-to-square"></i> แก้ไขสินค้า</a></li>
+            <li class="active"><a href="fix.html"><i class="fa-solid fa-pen-to-square"></i> แก้ไขสินค้า</a></li>
             <li><a href="account-settings.html"><i class="fa-solid fa-gear"></i> ตั้งค่าบัญชี</a></li>
         </ul>
         <hr class="sidebar-divider">
@@ -409,18 +409,18 @@
     </header>
 
     <main class="main-container">
-        <h1 class="form-title">ลงขายสินค้า</h1>
-        <p class="form-subtitle">อัปโหลดรูปภาพ (สูงสุด 5 รูป)</p>
+        <h1 class="form-title">แก้ไขข้อมูลสินค้า</h1>
+        <p class="form-subtitle">อัปเดตข้อมูลและรูปภาพสินค้าของคุณ</p>
 
         <div class="upload-box" onclick="document.getElementById('file-input').click()">
             <i class="fa-solid fa-plus"></i>
-            <span>เพิ่มรูปภาพ (สูงสุด 5 รูป)</span>
+            <span>เปลี่ยนรูปภาพ (สูงสุด 5 รูป)</span>
             <input type="file" id="file-input" style="display: none;" accept="image/*" multiple>
         </div>
 
         <div id="image-preview-container" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;"></div>
 
-        <form id="add-product-form">
+        <form id="edit-product-form">
             <div class="form-group">
                 <label class="form-label">ชื่อสินค้า</label>
                 <input type="text" id="product-name" class="form-input" placeholder="เช่น หนังสือชีววิทยา" required>
@@ -462,7 +462,7 @@
                 <textarea id="product-contact" class="form-textarea" placeholder="ระบุรายละเอียดช่องทางการติดต่อ.." required></textarea>
             </div>
 
-            <button type="submit" class="btn-submit">ลงประกาศ</button>
+            <button type="submit" class="btn-submit">อัปเดตข้อมูล</button>
         </form>
     </main>
 
@@ -476,11 +476,6 @@
                 <p class="footer-contact-desc">มีข้อสงสัย หรือต้องการสอบถามข้อมูลเพิ่มเติม สามารถติดต่อเราได้ผ่านช่องทางด้านล่างนี้</p>
                 
                 <ul class="footer-contact-info">
-                    <div class="footer-social-icons">
-                    <a href="#" class="footer-social-icon social-line"><i class="fa-brands fa-line"></i></a>
-                    <a href="#" class="footer-social-icon social-ig"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="footer-social-icon social-fb"><i class="fa-brands fa-facebook-f"></i></a>
-                </div>
                     <li><i class="fa-solid fa-envelope"></i> contact.swapandgo@gmail.com</li>
                     <li><i class="fa-solid fa-location-dot"></i> มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ</li>
                 </ul>
@@ -504,6 +499,37 @@
                     navProfileContainer.innerHTML = `<img src="${savedData.avatarImage}" alt="Profile">`;
                 } else {
                     navProfileContainer.innerHTML = `<i class="fa-solid fa-user" id="nav-user-icon" style="font-size: 1rem; color: #555;"></i>`;
+                }
+            }
+
+            // โหลดข้อมูลเดิมมาแสดงหากมีการส่ง id สินค้ามาทาง URL เช่น fix.html?id=123
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+
+            if (productId) {
+                const myProducts = JSON.parse(localStorage.getItem('myProducts')) || [];
+                const product = myProducts.find(p => p.id == productId);
+
+                if (product) {
+                    document.getElementById('product-name').value = product.name || '';
+                    document.getElementById('product-category').value = product.category || '';
+                    document.getElementById('product-price').value = product.price || '';
+                    document.getElementById('product-desc').value = product.description || '';
+                    document.getElementById('product-contact').value = product.contact || '';
+
+                    // เช็คเงื่อนไขสภาพสินค้า
+                    const conditionCheckboxes = document.querySelectorAll('.condition-checkbox');
+                    conditionCheckboxes.forEach(box => {
+                        if (box.value === product.condition) {
+                            box.checked = true;
+                        }
+                    });
+
+                    // แสดงรูปภาพเดิม
+                    if (product.images && product.images.length > 0) {
+                        uploadedImages = product.images;
+                        renderPreviews();
+                    }
                 }
             }
         });
@@ -589,10 +615,13 @@
             renderPreviews();
         };
 
-        const addProductForm = document.getElementById('add-product-form');
-        if (addProductForm) {
-            addProductForm.addEventListener('submit', function(e) {
+        const editProductForm = document.getElementById('edit-product-form');
+        if (editProductForm) {
+            editProductForm.addEventListener('submit', function(e) {
                 e.preventDefault();
+
+                const urlParams = new URLSearchParams(window.location.search);
+                const productId = urlParams.get('id');
 
                 const name = document.getElementById('product-name').value;
                 const category = document.getElementById('product-category').value;
@@ -609,30 +638,39 @@
 
                 const finalImages = uploadedImages.length > 0 ? uploadedImages : ["https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=300"];
 
-                const newProduct = {
-                    id: Date.now(),
-                    name: name,
-                    category: category,
-                    price: price,
-                    description: description,
-                    contact: contact,
-                    condition: selectedCondition,
-                    date: new Date().toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: 'numeric' }),
-                    status: "กำลังขาย",
-                    image: finalImages[0],
-                    images: finalImages
-                };
-
                 let myProducts = JSON.parse(localStorage.getItem('myProducts')) || [];
-                myProducts.unshift(newProduct);
-                localStorage.setItem('myProducts', JSON.stringify(myProducts));
-
                 let allProducts = JSON.parse(localStorage.getItem('allProducts')) || [];
-                allProducts.unshift(newProduct);
+
+                if (productId) {
+                    // อัปเดตสินค้าที่มีอยู่เดิมตาม ID
+                    const updateItem = (list) => {
+                        return list.map(p => {
+                            if (p.id == productId) {
+                                return {
+                                    ...p,
+                                    name: name,
+                                    category: category,
+                                    price: price,
+                                    description: description,
+                                    contact: contact,
+                                    condition: selectedCondition,
+                                    image: finalImages[0],
+                                    images: finalImages
+                                };
+                            }
+                            return p;
+                        });
+                    };
+
+                    myProducts = updateItem(myProducts);
+                    allProducts = updateItem(allProducts);
+                }
+
+                localStorage.setItem('myProducts', JSON.stringify(myProducts));
                 localStorage.setItem('allProducts', JSON.stringify(allProducts));
 
-                alert('ลงประกาศสินค้าสำเร็จ!');
-                window.location.href = 'index.html';
+                alert('อัปเดตข้อมูลสินค้าสำเร็จ!');
+                window.location.href = 'my-products.html';
             });
         }
     </script>

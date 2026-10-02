@@ -5258,3 +5258,116 @@ body {
 main {
     flex: 1;
 }
+/* สไตล์สำหรับส่วนกล่องหมวดหมู่สินค้าบนหน้าแรก */
+.custom-features-section {
+    padding: 30px 0;
+    background: transparent;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.custom-features-container {
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.custom-category-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 16px;
+    width: 100%;
+}
+
+.custom-category-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 25px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: all 0.25s ease;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.custom-category-card:hover {
+    transform: translateY(-4px);
+    border-color: #004d34;
+    box-shadow: 0 8px 20px rgba(0, 77, 52, 0.1);
+}
+
+.custom-category-card:hover .custom-icon-wrapper {
+    background-color: #004d34;
+    color: #ffffff;
+}
+
+.custom-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: #e8f5e9;
+    color: #004d34;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+
+.custom-category-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    min-width: 0;
+}
+
+.custom-category-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.custom-category-count {
+    font-size: 0.8rem;
+    color: #64748b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* รองรับการแสดงผลบนหน้าจอแท็บเล็ตและมือถือ */
+@media (max-width: 1024px) {
+    .custom-category-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .custom-category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+    .custom-features-container {
+        padding: 0 15px;
+    }
+}
+/* คลาสตัวอย่างสำหรับปุ่ม หรือลิงก์ปุ่มเริ่มขาย */
+.btn-sell, 
+.navbar .btn-sell,
+header .btn-sell {
+    color: #ffffff !important; /* บังคับให้ฟอนต์เป็นสีขาว */
+}
